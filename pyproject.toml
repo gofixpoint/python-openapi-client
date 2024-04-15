@@ -2,16 +2,14 @@
 name = "fixpoint_openapi_client"
 version = "0.1.0"
 description = "OpenAPI client for Fixpoint - Auto-improvement to make your LLM apps smarter"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
-authors = [
-{ name="Jakub Cichon", email="jakub@fixpoint.co" },
-{ name="Dylan Mikus", email="dylan@fixpoint.co" },
-]
-readme = "README.md"
+authors = ["Fixpoint <team@fixpoint.co>"]
+
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: Apache Software License"
 ]
+
+readme = "README.md"
 repository = "https://github.com/gofixpoint/python-openapi-client"
 keywords = ["OpenAPI", "OpenAPI-Generator"]
 include = ["openapi_client/py.typed"]

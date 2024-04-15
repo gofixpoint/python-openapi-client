@@ -20,8 +20,8 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "openapi-client"
-VERSION = "1.0.0"
+NAME = "fixpoint-openapi"
+VERSION = "0.1.0"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",
@@ -33,11 +33,11 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="fixpoint/llmproxy/v1/service.proto",
-    author="OpenAPI Generator community",
-    author_email="team@openapitools.org",
+    description="OpenAPI client for Fixpoint - Auto-improvement to make your LLM apps smarter",
+    author="Fixpoint",
+    author_email="team@fixpoint.co",
     url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "fixpoint/llmproxy/v1/service.proto"],
+    keywords=["OpenAPI", "OpenAPI-Generator"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
