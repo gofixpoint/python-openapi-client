@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_create_api_secret_request import V1CreateApiSecretRequest
+from fixpoint_openapi.models.v1_create_api_secret_request import V1CreateApiSecretRequest
 
 # TODO update the JSON string below
 json = "{}"

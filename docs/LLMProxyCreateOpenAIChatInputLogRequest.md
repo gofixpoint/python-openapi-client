@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.llm_proxy_create_open_ai_chat_input_log_request import LLMProxyCreateOpenAIChatInputLogRequest
+from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_input_log_request import LLMProxyCreateOpenAIChatInputLogRequest
 
 # TODO update the JSON string below
 json = "{}"

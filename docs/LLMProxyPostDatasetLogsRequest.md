@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.llm_proxy_post_dataset_logs_request import LLMProxyPostDatasetLogsRequest
+from fixpoint_openapi.models.llm_proxy_post_dataset_logs_request import LLMProxyPostDatasetLogsRequest
 
 # TODO update the JSON string below
 json = "{}"

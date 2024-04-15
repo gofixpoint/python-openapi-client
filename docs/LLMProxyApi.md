@@ -1,4 +1,4 @@
-# openapi_client.LLMProxyApi
+# fixpoint_openapi.LLMProxyApi
 
 All URIs are relative to *http://localhost*
 
@@ -35,24 +35,24 @@ This lets Fixpoint make select inference interactions on your behalf, such as ru
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_api_secret import V1ApiSecret
-from openapi_client.models.v1_create_api_secret_request import V1CreateApiSecretRequest
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_api_secret import V1ApiSecret
+from fixpoint_openapi.models.v1_create_api_secret_request import V1CreateApiSecretRequest
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateApiSecretRequest() # V1CreateApiSecretRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateApiSecretRequest() # V1CreateApiSecretRequest | 
 
     try:
         # Store LLM inference API secret
@@ -105,24 +105,24 @@ Create 1 or more application logs, which you can attach to an LLM log via a trac
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_create_app_logs_request import V1CreateAppLogsRequest
-from openapi_client.models.v1_create_app_logs_response import V1CreateAppLogsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_app_logs_request import V1CreateAppLogsRequest
+from fixpoint_openapi.models.v1_create_app_logs_response import V1CreateAppLogsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateAppLogsRequest() # V1CreateAppLogsRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateAppLogsRequest() # V1CreateAppLogsRequest | 
 
     try:
         # Create application logs
@@ -173,24 +173,24 @@ Create LLM dataset
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_create_dataset_request import V1CreateDatasetRequest
-from openapi_client.models.v1_create_dataset_response import V1CreateDatasetResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_dataset_request import V1CreateDatasetRequest
+from fixpoint_openapi.models.v1_create_dataset_response import V1CreateDatasetResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateDatasetRequest() # V1CreateDatasetRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateDatasetRequest() # V1CreateDatasetRequest | 
 
     try:
         # Create LLM dataset
@@ -243,24 +243,24 @@ Create \"likes\" or user feedback for an LLM log. The user feedback can be from 
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_create_likes_request import V1CreateLikesRequest
-from openapi_client.models.v1_create_likes_response import V1CreateLikesResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_likes_request import V1CreateLikesRequest
+from fixpoint_openapi.models.v1_create_likes_response import V1CreateLikesResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateLikesRequest() # V1CreateLikesRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateLikesRequest() # V1CreateLikesRequest | 
 
     try:
         # Add LLM log feedback (\"likes\")
@@ -311,24 +311,24 @@ Attach attribute to LLM log
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_create_log_attribute_request import V1CreateLogAttributeRequest
-from openapi_client.models.v1_create_log_attribute_response import V1CreateLogAttributeResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_log_attribute_request import V1CreateLogAttributeRequest
+from fixpoint_openapi.models.v1_create_log_attribute_response import V1CreateLogAttributeResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateLogAttributeRequest() # V1CreateLogAttributeRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateLogAttributeRequest() # V1CreateLogAttributeRequest | 
 
     try:
         # Attach attribute to LLM log
@@ -381,25 +381,25 @@ Store an LLM inference request's input in Fixpoint (aka the \"LLM input log\").
 
 
 ```python
-import openapi_client
-from openapi_client.models.llm_proxy_create_open_ai_chat_input_log_request import LLMProxyCreateOpenAIChatInputLogRequest
-from openapi_client.models.v1_open_ai_chat_input_log import V1OpenAIChatInputLog
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_input_log_request import LLMProxyCreateOpenAIChatInputLogRequest
+from fixpoint_openapi.models.v1_open_ai_chat_input_log import V1OpenAIChatInputLog
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     model_name = 'model_name_example' # str | 
-    body = openapi_client.LLMProxyCreateOpenAIChatInputLogRequest() # LLMProxyCreateOpenAIChatInputLogRequest | 
+    body = fixpoint_openapi.LLMProxyCreateOpenAIChatInputLogRequest() # LLMProxyCreateOpenAIChatInputLogRequest | 
 
     try:
         # Create an LLM input log
@@ -453,25 +453,25 @@ Store an LLM inference request's output in Fixpoint (aka the \"LLM output log\")
 
 
 ```python
-import openapi_client
-from openapi_client.models.llm_proxy_create_open_ai_chat_output_log_request import LLMProxyCreateOpenAIChatOutputLogRequest
-from openapi_client.models.v1_open_ai_chat_output_log import V1OpenAIChatOutputLog
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_output_log_request import LLMProxyCreateOpenAIChatOutputLogRequest
+from fixpoint_openapi.models.v1_open_ai_chat_output_log import V1OpenAIChatOutputLog
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     model_name = 'model_name_example' # str | 
-    body = openapi_client.LLMProxyCreateOpenAIChatOutputLogRequest() # LLMProxyCreateOpenAIChatOutputLogRequest | 
+    body = fixpoint_openapi.LLMProxyCreateOpenAIChatOutputLogRequest() # LLMProxyCreateOpenAIChatOutputLogRequest | 
 
     try:
         # Create an LLM output log
@@ -525,24 +525,24 @@ Creates an LLM inference routing config so you can dynamically control to which 
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_create_routing_config_request import V1CreateRoutingConfigRequest
-from openapi_client.models.v1_routing_config import V1RoutingConfig
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_routing_config_request import V1CreateRoutingConfigRequest
+from fixpoint_openapi.models.v1_routing_config import V1RoutingConfig
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
-    body = openapi_client.V1CreateRoutingConfigRequest() # V1CreateRoutingConfigRequest | 
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    body = fixpoint_openapi.V1CreateRoutingConfigRequest() # V1CreateRoutingConfigRequest | 
 
     try:
         # Create LLM routing config
@@ -593,22 +593,22 @@ Remove LLM log attribute
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_delete_log_attribute_response import V1DeleteLogAttributeResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_delete_log_attribute_response import V1DeleteLogAttributeResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     name = 'name_example' # str | 
 
     try:
@@ -660,22 +660,22 @@ List LLM inference API secrets
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_api_secrets_response import V1ListApiSecretsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_api_secrets_response import V1ListApiSecretsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
 
     try:
         # List LLM inference API secrets
@@ -725,22 +725,22 @@ List application logs stored in Fixpoint.
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_app_logs_response import V1ListAppLogsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_app_logs_response import V1ListAppLogsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     trace_id = 'trace_id_example' # str |  (optional)
 
     try:
@@ -792,22 +792,22 @@ List LLM datasets
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_datasets_response import V1ListDatasetsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_datasets_response import V1ListDatasetsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     dataset_name = 'dataset_name_example' # str |  (optional)
     mode = 'MODE_UNSPECIFIED' # str |  (optional) (default to 'MODE_UNSPECIFIED')
 
@@ -861,22 +861,22 @@ List LLM log feedback (\"likes\")
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_likes_response import V1ListLikesResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_likes_response import V1ListLikesResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     page_size = 56 # int |  (optional)
     log_name = 'log_name_example' # str |  (optional)
     user_id = 'user_id_example' # str |  (optional)
@@ -936,22 +936,22 @@ List attributes on an LLM log
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_log_attributes_response import V1ListLogAttributesResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_log_attributes_response import V1ListLogAttributesResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     log_name = 'log_name_example' # str |  (optional)
 
     try:
@@ -1003,22 +1003,22 @@ List LLM logs
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_open_ai_chat_logs_response import V1ListOpenAIChatLogsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_open_ai_chat_logs_response import V1ListOpenAIChatLogsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     parent = 'parent_example' # str | The parent resource collection. In this case, \"/openai_chats/{model_name}\".
     page_size = 56 # int |  (optional)
     page_token = 'page_token_example' # str |  (optional)
@@ -1088,22 +1088,22 @@ List LLM routing configs
 
 
 ```python
-import openapi_client
-from openapi_client.models.v1_list_routing_configs_response import V1ListRoutingConfigsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_routing_configs_response import V1ListRoutingConfigsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
 
     try:
         # List LLM routing configs
@@ -1151,25 +1151,25 @@ Add logs to a dataset
 
 
 ```python
-import openapi_client
-from openapi_client.models.llm_proxy_post_dataset_logs_request import LLMProxyPostDatasetLogsRequest
-from openapi_client.models.v1_post_dataset_logs_response import V1PostDatasetLogsResponse
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.llm_proxy_post_dataset_logs_request import LLMProxyPostDatasetLogsRequest
+from fixpoint_openapi.models.v1_post_dataset_logs_response import V1PostDatasetLogsResponse
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     name = 'name_example' # str | 
-    body = openapi_client.LLMProxyPostDatasetLogsRequest() # LLMProxyPostDatasetLogsRequest | 
+    body = fixpoint_openapi.LLMProxyPostDatasetLogsRequest() # LLMProxyPostDatasetLogsRequest | 
 
     try:
         # Add logs to a dataset
@@ -1223,25 +1223,25 @@ Update spending totals on a routing config.
 
 
 ```python
-import openapi_client
-from openapi_client.models.llm_proxy_update_spending_totals_request import LLMProxyUpdateSpendingTotalsRequest
-from openapi_client.models.v1_routing_config import V1RoutingConfig
-from openapi_client.rest import ApiException
+import fixpoint_openapi
+from fixpoint_openapi.models.llm_proxy_update_spending_totals_request import LLMProxyUpdateSpendingTotalsRequest
+from fixpoint_openapi.models.v1_routing_config import V1RoutingConfig
+from fixpoint_openapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = fixpoint_openapi.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
     route_config_id = 'route_config_id_example' # str | 
-    body = openapi_client.LLMProxyUpdateSpendingTotalsRequest() # LLMProxyUpdateSpendingTotalsRequest | 
+    body = fixpoint_openapi.LLMProxyUpdateSpendingTotalsRequest() # LLMProxyUpdateSpendingTotalsRequest | 
 
     try:
         # Update routing config spending totals

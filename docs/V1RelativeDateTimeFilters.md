@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_relative_date_time_filters import V1RelativeDateTimeFilters
+from fixpoint_openapi.models.v1_relative_date_time_filters import V1RelativeDateTimeFilters
 
 # TODO update the JSON string below
 json = "{}"

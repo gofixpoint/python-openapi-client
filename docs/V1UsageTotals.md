@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_usage_totals import V1UsageTotals
+from fixpoint_openapi.models.v1_usage_totals import V1UsageTotals
 
 # TODO update the JSON string below
 json = "{}"

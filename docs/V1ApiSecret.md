@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_api_secret import V1ApiSecret
+from fixpoint_openapi.models.v1_api_secret import V1ApiSecret
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.protobuf_any import ProtobufAny
+from fixpoint_openapi.models.protobuf_any import ProtobufAny
 
 # TODO update the JSON string below
 json = "{}"

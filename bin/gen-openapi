@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}"; )" &> /dev/null && pwd 2> /dev/null; )";
+ROOT_DIR=$(realpath "${SCRIPT_DIR}/..")
+
+cd $ROOT_DIR
+
+additional_properties=()
+additional_properties+=("appDescription='OpenAPI client for Fixpoint - Auto-improvement to make your LLM apps smarter'")
+additional_properties+=("projectKeywords='OpenAPI'")
+additional_properties+=("infoContact='Fixpoint <team@fixpoint.co>'")
+additional_properties+=("licenseInfo=License :: OSI Approved :: Apache Software License")
+additional_properties+=("packageVersion=0.1.0")
+
+# addProps=$(IFS=','; echo "${additional_properties[*]}")
+# echo $addProps
+# exit
+
+openapi-generator generate \
+    -i https://docs.fixpoint.co/gen/openapiv2/fixpoint/llmproxy/v1/service.swagger.json \
+    -g python \
+    -o . \
+    --package-name fixpoint_openapi \
+    --additional-properties "$(IFS=','; echo "${additional_properties[*]}")"

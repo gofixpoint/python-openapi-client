@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.llmproxyv1_model import Llmproxyv1Model
+from fixpoint_openapi.models.llmproxyv1_model import Llmproxyv1Model
 
 # TODO update the JSON string below
 json = "{}"

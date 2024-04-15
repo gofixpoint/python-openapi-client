@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_log_attribute import V1LogAttribute
+from fixpoint_openapi.models.v1_log_attribute import V1LogAttribute
 
 # TODO update the JSON string below
 json = "{}"

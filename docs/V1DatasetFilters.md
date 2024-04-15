@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_dataset_filters import V1DatasetFilters
+from fixpoint_openapi.models.v1_dataset_filters import V1DatasetFilters
 
 # TODO update the JSON string below
 json = "{}"

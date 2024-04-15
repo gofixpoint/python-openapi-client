@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.tool_call_function import ToolCallFunction
+from fixpoint_openapi.models.tool_call_function import ToolCallFunction
 
 # TODO update the JSON string below
 json = "{}"

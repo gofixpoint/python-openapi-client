@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_create_dataset_request import V1CreateDatasetRequest
+from fixpoint_openapi.models.v1_create_dataset_request import V1CreateDatasetRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.rpc_status import RpcStatus
+from fixpoint_openapi.models.rpc_status import RpcStatus
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_post_dataset_logs_response import V1PostDatasetLogsResponse
+from fixpoint_openapi.models.v1_post_dataset_logs_response import V1PostDatasetLogsResponse
 
 # TODO update the JSON string below
 json = "{}"

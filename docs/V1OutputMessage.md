@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_output_message import V1OutputMessage
+from fixpoint_openapi.models.v1_output_message import V1OutputMessage
 
 # TODO update the JSON string below
 json = "{}"

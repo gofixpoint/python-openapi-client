@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.v1_list_routing_configs_response import V1ListRoutingConfigsResponse
+from fixpoint_openapi.models.v1_list_routing_configs_response import V1ListRoutingConfigsResponse
 
 # TODO update the JSON string below
 json = "{}"
