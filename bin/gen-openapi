@@ -17,7 +17,7 @@ additional_properties+=("packageVersion=0.1.0")
 if [[ -n "${OPENAPI_SCHEMA_URL:-}" ]]; then
     openapi_url="${OPENAPI_SCHEMA_URL}"
 else
-    openapi_url="https://docs.fixpoint.co/gen/openapiv2/fixpoint/llmproxy/v1/service.swagger.json"
+    openapi_url="https://docs.fixpoint.co/gen/openapiv2/fixpoint/v1/service.swagger.json"
 fi
 
 openapi-generator generate \
