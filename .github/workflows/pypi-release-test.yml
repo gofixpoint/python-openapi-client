@@ -30,7 +30,7 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: configure Poetry repo
-        run: poetry config repositories.test-pypi https://test.pypi.org/simple/
+        run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
 
       - name: configure Poetry PyPi token
         run: poetry config pypi-token.test-pypi ${{ secrets.PYPI_API_TOKEN_TEST }}
