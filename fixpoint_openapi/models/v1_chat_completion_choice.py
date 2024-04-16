@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_tool_call import V1ToolCall
+from fixpoint_openapi.models.v1_output_message import V1OutputMessage
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1OutputMessage(BaseModel):
+class V1ChatCompletionChoice(BaseModel):
     """
-    V1OutputMessage
+    V1ChatCompletionChoice
     """ # noqa: E501
-    role: StrictStr
-    content: Optional[StrictStr] = Field(default=None, description="If the model produced a plain text completion, this will be set. If the model only made tool calls, this will be empty.")
-    tool_calls: Optional[List[V1ToolCall]] = Field(default=None, description="Optional tool calls, if the model called any.", alias="toolCalls")
-    __properties: ClassVar[List[str]] = ["role", "content", "toolCalls"]
+    index: Optional[StrictInt] = None
+    message: V1OutputMessage
+    finish_reason: Optional[StrictStr] = Field(default=None, alias="finishReason")
+    __properties: ClassVar[List[str]] = ["index", "message", "finishReason"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class V1OutputMessage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a JSON string"""
+        """Create an instance of V1ChatCompletionChoice from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +71,14 @@ class V1OutputMessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tool_calls (list)
-        _items = []
-        if self.tool_calls:
-            for _item in self.tool_calls:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['toolCalls'] = _items
+        # override the default output from pydantic by calling `to_dict()` of message
+        if self.message:
+            _dict['message'] = self.message.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a dict"""
+        """Create an instance of V1ChatCompletionChoice from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +86,9 @@ class V1OutputMessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role"),
-            "content": obj.get("content"),
-            "toolCalls": [V1ToolCall.from_dict(_item) for _item in obj["toolCalls"]] if obj.get("toolCalls") is not None else None
+            "index": obj.get("index"),
+            "message": V1OutputMessage.from_dict(obj["message"]) if obj.get("message") is not None else None,
+            "finishReason": obj.get("finishReason")
         })
         return _obj
 

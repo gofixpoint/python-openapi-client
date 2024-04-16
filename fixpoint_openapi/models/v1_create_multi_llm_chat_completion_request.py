@@ -19,18 +19,23 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_tool_call import V1ToolCall
+from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request_model import V1CreateMultiLLMChatCompletionRequestModel
+from fixpoint_openapi.models.v1_input_message import V1InputMessage
+from fixpoint_openapi.models.v1_mode import V1Mode
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1OutputMessage(BaseModel):
+class V1CreateMultiLLMChatCompletionRequest(BaseModel):
     """
-    V1OutputMessage
+    V1CreateMultiLLMChatCompletionRequest
     """ # noqa: E501
-    role: StrictStr
-    content: Optional[StrictStr] = Field(default=None, description="If the model produced a plain text completion, this will be set. If the model only made tool calls, this will be empty.")
-    tool_calls: Optional[List[V1ToolCall]] = Field(default=None, description="Optional tool calls, if the model called any.", alias="toolCalls")
-    __properties: ClassVar[List[str]] = ["role", "content", "toolCalls"]
+    models: Optional[List[V1CreateMultiLLMChatCompletionRequestModel]] = Field(default=None, description="The models we will route all inference requests to. We return the inference response from the first model in the list to the client.")
+    tracing: Optional[V1Tracing] = None
+    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
+    messages: Optional[List[V1InputMessage]] = None
+    mode: Optional[V1Mode] = None
+    __properties: ClassVar[List[str]] = ["models", "tracing", "userId", "messages", "mode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +55,7 @@ class V1OutputMessage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a JSON string"""
+        """Create an instance of V1CreateMultiLLMChatCompletionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +76,28 @@ class V1OutputMessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tool_calls (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in models (list)
         _items = []
-        if self.tool_calls:
-            for _item in self.tool_calls:
+        if self.models:
+            for _item in self.models:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['toolCalls'] = _items
+            _dict['models'] = _items
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
+        _items = []
+        if self.messages:
+            for _item in self.messages:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['messages'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a dict"""
+        """Create an instance of V1CreateMultiLLMChatCompletionRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +105,11 @@ class V1OutputMessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role"),
-            "content": obj.get("content"),
-            "toolCalls": [V1ToolCall.from_dict(_item) for _item in obj["toolCalls"]] if obj.get("toolCalls") is not None else None
+            "models": [V1CreateMultiLLMChatCompletionRequestModel.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None,
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
+            "userId": obj.get("userId"),
+            "messages": [V1InputMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "mode": obj.get("mode")
         })
         return _obj
 

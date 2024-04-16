@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role** | **str** |  | [optional] 
-**content** | **str** |  | [optional] 
+**role** | **str** |  | 
+**content** | **str** | If the model produced a plain text completion, this will be set. If the model only made tool calls, this will be empty. | [optional] 
 **tool_calls** | [**List[V1ToolCall]**](V1ToolCall.md) | Optional tool calls, if the model called any. | [optional] 
 
 ## Example

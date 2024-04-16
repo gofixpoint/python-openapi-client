@@ -28,6 +28,9 @@ from fixpoint_openapi.models.v1_api_secret import V1ApiSecret
 from fixpoint_openapi.models.v1_api_secret_provider import V1ApiSecretProvider
 from fixpoint_openapi.models.v1_app_log import V1AppLog
 from fixpoint_openapi.models.v1_attribute_filters import V1AttributeFilters
+from fixpoint_openapi.models.v1_chat_completion import V1ChatCompletion
+from fixpoint_openapi.models.v1_chat_completion_choice import V1ChatCompletionChoice
+from fixpoint_openapi.models.v1_chat_completion_usage import V1ChatCompletionUsage
 from fixpoint_openapi.models.v1_create_api_secret_request import V1CreateApiSecretRequest
 from fixpoint_openapi.models.v1_create_app_logs_request import V1CreateAppLogsRequest
 from fixpoint_openapi.models.v1_create_app_logs_response import V1CreateAppLogsResponse
@@ -37,6 +40,8 @@ from fixpoint_openapi.models.v1_create_likes_request import V1CreateLikesRequest
 from fixpoint_openapi.models.v1_create_likes_response import V1CreateLikesResponse
 from fixpoint_openapi.models.v1_create_log_attribute_request import V1CreateLogAttributeRequest
 from fixpoint_openapi.models.v1_create_log_attribute_response import V1CreateLogAttributeResponse
+from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request import V1CreateMultiLLMChatCompletionRequest
+from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request_model import V1CreateMultiLLMChatCompletionRequestModel
 from fixpoint_openapi.models.v1_create_routing_config_request import V1CreateRoutingConfigRequest
 from fixpoint_openapi.models.v1_dataset import V1Dataset
 from fixpoint_openapi.models.v1_dataset_filters import V1DatasetFilters
@@ -55,6 +60,7 @@ from fixpoint_openapi.models.v1_list_open_ai_chat_logs_response import V1ListOpe
 from fixpoint_openapi.models.v1_list_routing_configs_response import V1ListRoutingConfigsResponse
 from fixpoint_openapi.models.v1_log_attribute import V1LogAttribute
 from fixpoint_openapi.models.v1_mode import V1Mode
+from fixpoint_openapi.models.v1_multi_llm_chat_completion import V1MultiLLMChatCompletion
 from fixpoint_openapi.models.v1_open_ai_chat_input_log import V1OpenAIChatInputLog
 from fixpoint_openapi.models.v1_open_ai_chat_log import V1OpenAIChatLog
 from fixpoint_openapi.models.v1_open_ai_chat_logs_filters import V1OpenAIChatLogsFilters
@@ -71,4 +77,5 @@ from fixpoint_openapi.models.v1_spend_cap import V1SpendCap
 from fixpoint_openapi.models.v1_terminal_state import V1TerminalState
 from fixpoint_openapi.models.v1_thumbs_reaction import V1ThumbsReaction
 from fixpoint_openapi.models.v1_tool_call import V1ToolCall
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from fixpoint_openapi.models.v1_usage_totals import V1UsageTotals

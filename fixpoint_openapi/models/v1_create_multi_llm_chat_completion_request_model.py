@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_tool_call import V1ToolCall
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1OutputMessage(BaseModel):
+class V1CreateMultiLLMChatCompletionRequestModel(BaseModel):
     """
-    V1OutputMessage
+    V1CreateMultiLLMChatCompletionRequestModel
     """ # noqa: E501
-    role: StrictStr
-    content: Optional[StrictStr] = Field(default=None, description="If the model produced a plain text completion, this will be set. If the model only made tool calls, this will be empty.")
-    tool_calls: Optional[List[V1ToolCall]] = Field(default=None, description="Optional tool calls, if the model called any.", alias="toolCalls")
-    __properties: ClassVar[List[str]] = ["role", "content", "toolCalls"]
+    name: Optional[StrictStr] = Field(default=None, description="Supported model providers are:  - openai - anthropic")
+    temperature: Optional[Union[StrictFloat, StrictInt]] = None
+    api_key: Optional[StrictStr] = Field(default=None, description="Optional API key for the model provider that serves this model. If you do not specify this, we will try to load in the corresponding API key stored within Fixpoint.", alias="apiKey")
+    max_tokens: Optional[StrictInt] = Field(default=None, alias="maxTokens")
+    __properties: ClassVar[List[str]] = ["name", "temperature", "apiKey", "maxTokens"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class V1OutputMessage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a JSON string"""
+        """Create an instance of V1CreateMultiLLMChatCompletionRequestModel from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,18 +71,16 @@ class V1OutputMessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tool_calls (list)
-        _items = []
-        if self.tool_calls:
-            for _item in self.tool_calls:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['toolCalls'] = _items
+        # set to None if temperature (nullable) is None
+        # and model_fields_set contains the field
+        if self.temperature is None and "temperature" in self.model_fields_set:
+            _dict['temperature'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a dict"""
+        """Create an instance of V1CreateMultiLLMChatCompletionRequestModel from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +88,10 @@ class V1OutputMessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role"),
-            "content": obj.get("content"),
-            "toolCalls": [V1ToolCall.from_dict(_item) for _item in obj["toolCalls"]] if obj.get("toolCalls") is not None else None
+            "name": obj.get("name"),
+            "temperature": obj.get("temperature"),
+            "apiKey": obj.get("apiKey"),
+            "maxTokens": obj.get("maxTokens")
         })
         return _obj
 
