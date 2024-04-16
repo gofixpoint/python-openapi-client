@@ -38,6 +38,3 @@ jobs:
       - name: Publish to PyPI test repository
         run: poetry publish -vvv --no-interaction --repository test-pypi
         working-directory: ${{ github.workspace }}
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN_TEST }}
