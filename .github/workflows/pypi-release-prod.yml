@@ -1,4 +1,4 @@
-name: Release PyPi test package
+name: Release PyPi prod package
 
 on:
   workflow_dispatch:
