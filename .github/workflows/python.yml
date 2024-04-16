@@ -5,7 +5,13 @@
 
 name: fixpoint_openapi Python package
 
-on: [push, pull_request]
+on:
+  # Triggers the workflow on push events but only for the master branch
+  push:
+    branches: [main]
+  # Triggers workflow on all PRs
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
