@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**models** | [**List[Llmproxyv1Model]**](Llmproxyv1Model.md) |  | [optional] 
+**models** | [**List[Fixpointv1Model]**](Fixpointv1Model.md) |  | [optional] 
 **description** | **str** |  | [optional] 
 **fallback_strategy** | [**V1FallbackStrategy**](V1FallbackStrategy.md) |  | [optional] 
 **terminal_state** | [**V1TerminalState**](V1TerminalState.md) |  | [optional] 

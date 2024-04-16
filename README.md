@@ -66,16 +66,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateApiSecretRequest() # V1CreateApiSecretRequest | 
 
     try:
         # Store LLM inference API secret
-        api_response = api_instance.l_lm_proxy_create_api_secret(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_api_secret:\n")
+        api_response = api_instance.fixpoint_create_api_secret(body)
+        print("The response of FixpointApi->fixpoint_create_api_secret:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_api_secret: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_api_secret: %s\n" % e)
 
 ```
 
@@ -85,34 +85,34 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*LLMProxyApi* | [**l_lm_proxy_create_api_secret**](docs/LLMProxyApi.md#l_lm_proxy_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
-*LLMProxyApi* | [**l_lm_proxy_create_app_logs**](docs/LLMProxyApi.md#l_lm_proxy_create_app_logs) | **POST** /v1/app_logs | Create application logs
-*LLMProxyApi* | [**l_lm_proxy_create_dataset**](docs/LLMProxyApi.md#l_lm_proxy_create_dataset) | **POST** /v1/datasets | Create LLM dataset
-*LLMProxyApi* | [**l_lm_proxy_create_likes**](docs/LLMProxyApi.md#l_lm_proxy_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
-*LLMProxyApi* | [**l_lm_proxy_create_log_attribute**](docs/LLMProxyApi.md#l_lm_proxy_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
-*LLMProxyApi* | [**l_lm_proxy_create_open_ai_chat_input_log**](docs/LLMProxyApi.md#l_lm_proxy_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
-*LLMProxyApi* | [**l_lm_proxy_create_open_ai_chat_output_log**](docs/LLMProxyApi.md#l_lm_proxy_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
-*LLMProxyApi* | [**l_lm_proxy_create_routing_config**](docs/LLMProxyApi.md#l_lm_proxy_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
-*LLMProxyApi* | [**l_lm_proxy_delete_log_attribute**](docs/LLMProxyApi.md#l_lm_proxy_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
-*LLMProxyApi* | [**l_lm_proxy_list_api_secrets**](docs/LLMProxyApi.md#l_lm_proxy_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
-*LLMProxyApi* | [**l_lm_proxy_list_app_logs**](docs/LLMProxyApi.md#l_lm_proxy_list_app_logs) | **GET** /v1/app_logs | List application logs
-*LLMProxyApi* | [**l_lm_proxy_list_datasets**](docs/LLMProxyApi.md#l_lm_proxy_list_datasets) | **GET** /v1/datasets | List LLM datasets
-*LLMProxyApi* | [**l_lm_proxy_list_likes**](docs/LLMProxyApi.md#l_lm_proxy_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
-*LLMProxyApi* | [**l_lm_proxy_list_log_attributes**](docs/LLMProxyApi.md#l_lm_proxy_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
-*LLMProxyApi* | [**l_lm_proxy_list_open_ai_chat_logs**](docs/LLMProxyApi.md#l_lm_proxy_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
-*LLMProxyApi* | [**l_lm_proxy_list_routing_configs**](docs/LLMProxyApi.md#l_lm_proxy_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
-*LLMProxyApi* | [**l_lm_proxy_post_dataset_logs**](docs/LLMProxyApi.md#l_lm_proxy_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
-*LLMProxyApi* | [**l_lm_proxy_update_spending_totals**](docs/LLMProxyApi.md#l_lm_proxy_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
+*FixpointApi* | [**fixpoint_create_api_secret**](docs/FixpointApi.md#fixpoint_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
+*FixpointApi* | [**fixpoint_create_app_logs**](docs/FixpointApi.md#fixpoint_create_app_logs) | **POST** /v1/app_logs | Create application logs
+*FixpointApi* | [**fixpoint_create_dataset**](docs/FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
+*FixpointApi* | [**fixpoint_create_likes**](docs/FixpointApi.md#fixpoint_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
+*FixpointApi* | [**fixpoint_create_log_attribute**](docs/FixpointApi.md#fixpoint_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
+*FixpointApi* | [**fixpoint_create_open_ai_chat_input_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
+*FixpointApi* | [**fixpoint_create_open_ai_chat_output_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
+*FixpointApi* | [**fixpoint_create_routing_config**](docs/FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
+*FixpointApi* | [**fixpoint_delete_log_attribute**](docs/FixpointApi.md#fixpoint_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
+*FixpointApi* | [**fixpoint_list_api_secrets**](docs/FixpointApi.md#fixpoint_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
+*FixpointApi* | [**fixpoint_list_app_logs**](docs/FixpointApi.md#fixpoint_list_app_logs) | **GET** /v1/app_logs | List application logs
+*FixpointApi* | [**fixpoint_list_datasets**](docs/FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
+*FixpointApi* | [**fixpoint_list_likes**](docs/FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
+*FixpointApi* | [**fixpoint_list_log_attributes**](docs/FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
+*FixpointApi* | [**fixpoint_list_open_ai_chat_logs**](docs/FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
+*FixpointApi* | [**fixpoint_list_routing_configs**](docs/FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
+*FixpointApi* | [**fixpoint_post_dataset_logs**](docs/FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
+*FixpointApi* | [**fixpoint_update_spending_totals**](docs/FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
 
 
 ## Documentation For Models
 
  - [AppLogLevelType](docs/AppLogLevelType.md)
- - [LLMProxyCreateOpenAIChatInputLogRequest](docs/LLMProxyCreateOpenAIChatInputLogRequest.md)
- - [LLMProxyCreateOpenAIChatOutputLogRequest](docs/LLMProxyCreateOpenAIChatOutputLogRequest.md)
- - [LLMProxyPostDatasetLogsRequest](docs/LLMProxyPostDatasetLogsRequest.md)
- - [LLMProxyUpdateSpendingTotalsRequest](docs/LLMProxyUpdateSpendingTotalsRequest.md)
- - [Llmproxyv1Model](docs/Llmproxyv1Model.md)
+ - [FixpointCreateOpenAIChatInputLogRequest](docs/FixpointCreateOpenAIChatInputLogRequest.md)
+ - [FixpointCreateOpenAIChatOutputLogRequest](docs/FixpointCreateOpenAIChatOutputLogRequest.md)
+ - [FixpointPostDatasetLogsRequest](docs/FixpointPostDatasetLogsRequest.md)
+ - [FixpointUpdateSpendingTotalsRequest](docs/FixpointUpdateSpendingTotalsRequest.md)
+ - [Fixpointv1Model](docs/Fixpointv1Model.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [ProtobufNullValue](docs/ProtobufNullValue.md)
  - [RpcStatus](docs/RpcStatus.md)

@@ -1,4 +1,4 @@
-# LLMProxyCreateOpenAIChatOutputLogRequest
+# FixpointCreateOpenAIChatOutputLogRequest
 
 
 ## Properties
@@ -16,19 +16,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_output_log_request import LLMProxyCreateOpenAIChatOutputLogRequest
+from fixpoint_openapi.models.fixpoint_create_open_ai_chat_output_log_request import FixpointCreateOpenAIChatOutputLogRequest
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of LLMProxyCreateOpenAIChatOutputLogRequest from a JSON string
-llm_proxy_create_open_ai_chat_output_log_request_instance = LLMProxyCreateOpenAIChatOutputLogRequest.from_json(json)
+# create an instance of FixpointCreateOpenAIChatOutputLogRequest from a JSON string
+fixpoint_create_open_ai_chat_output_log_request_instance = FixpointCreateOpenAIChatOutputLogRequest.from_json(json)
 # print the JSON string representation of the object
-print(LLMProxyCreateOpenAIChatOutputLogRequest.to_json())
+print(FixpointCreateOpenAIChatOutputLogRequest.to_json())
 
 # convert the object into a dict
-llm_proxy_create_open_ai_chat_output_log_request_dict = llm_proxy_create_open_ai_chat_output_log_request_instance.to_dict()
-# create an instance of LLMProxyCreateOpenAIChatOutputLogRequest from a dict
-llm_proxy_create_open_ai_chat_output_log_request_form_dict = llm_proxy_create_open_ai_chat_output_log_request.from_dict(llm_proxy_create_open_ai_chat_output_log_request_dict)
+fixpoint_create_open_ai_chat_output_log_request_dict = fixpoint_create_open_ai_chat_output_log_request_instance.to_dict()
+# create an instance of FixpointCreateOpenAIChatOutputLogRequest from a dict
+fixpoint_create_open_ai_chat_output_log_request_form_dict = fixpoint_create_open_ai_chat_output_log_request.from_dict(fixpoint_create_open_ai_chat_output_log_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

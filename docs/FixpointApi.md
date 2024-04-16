@@ -1,31 +1,31 @@
-# fixpoint_openapi.LLMProxyApi
+# fixpoint_openapi.FixpointApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**l_lm_proxy_create_api_secret**](LLMProxyApi.md#l_lm_proxy_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
-[**l_lm_proxy_create_app_logs**](LLMProxyApi.md#l_lm_proxy_create_app_logs) | **POST** /v1/app_logs | Create application logs
-[**l_lm_proxy_create_dataset**](LLMProxyApi.md#l_lm_proxy_create_dataset) | **POST** /v1/datasets | Create LLM dataset
-[**l_lm_proxy_create_likes**](LLMProxyApi.md#l_lm_proxy_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
-[**l_lm_proxy_create_log_attribute**](LLMProxyApi.md#l_lm_proxy_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
-[**l_lm_proxy_create_open_ai_chat_input_log**](LLMProxyApi.md#l_lm_proxy_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
-[**l_lm_proxy_create_open_ai_chat_output_log**](LLMProxyApi.md#l_lm_proxy_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
-[**l_lm_proxy_create_routing_config**](LLMProxyApi.md#l_lm_proxy_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
-[**l_lm_proxy_delete_log_attribute**](LLMProxyApi.md#l_lm_proxy_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
-[**l_lm_proxy_list_api_secrets**](LLMProxyApi.md#l_lm_proxy_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
-[**l_lm_proxy_list_app_logs**](LLMProxyApi.md#l_lm_proxy_list_app_logs) | **GET** /v1/app_logs | List application logs
-[**l_lm_proxy_list_datasets**](LLMProxyApi.md#l_lm_proxy_list_datasets) | **GET** /v1/datasets | List LLM datasets
-[**l_lm_proxy_list_likes**](LLMProxyApi.md#l_lm_proxy_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
-[**l_lm_proxy_list_log_attributes**](LLMProxyApi.md#l_lm_proxy_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
-[**l_lm_proxy_list_open_ai_chat_logs**](LLMProxyApi.md#l_lm_proxy_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
-[**l_lm_proxy_list_routing_configs**](LLMProxyApi.md#l_lm_proxy_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
-[**l_lm_proxy_post_dataset_logs**](LLMProxyApi.md#l_lm_proxy_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
-[**l_lm_proxy_update_spending_totals**](LLMProxyApi.md#l_lm_proxy_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
+[**fixpoint_create_api_secret**](FixpointApi.md#fixpoint_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
+[**fixpoint_create_app_logs**](FixpointApi.md#fixpoint_create_app_logs) | **POST** /v1/app_logs | Create application logs
+[**fixpoint_create_dataset**](FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
+[**fixpoint_create_likes**](FixpointApi.md#fixpoint_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
+[**fixpoint_create_log_attribute**](FixpointApi.md#fixpoint_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
+[**fixpoint_create_open_ai_chat_input_log**](FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
+[**fixpoint_create_open_ai_chat_output_log**](FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
+[**fixpoint_create_routing_config**](FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
+[**fixpoint_delete_log_attribute**](FixpointApi.md#fixpoint_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
+[**fixpoint_list_api_secrets**](FixpointApi.md#fixpoint_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
+[**fixpoint_list_app_logs**](FixpointApi.md#fixpoint_list_app_logs) | **GET** /v1/app_logs | List application logs
+[**fixpoint_list_datasets**](FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
+[**fixpoint_list_likes**](FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
+[**fixpoint_list_log_attributes**](FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
+[**fixpoint_list_open_ai_chat_logs**](FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
+[**fixpoint_list_routing_configs**](FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
+[**fixpoint_post_dataset_logs**](FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
+[**fixpoint_update_spending_totals**](FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
 
 
-# **l_lm_proxy_create_api_secret**
-> V1ApiSecret l_lm_proxy_create_api_secret(body)
+# **fixpoint_create_api_secret**
+> V1ApiSecret fixpoint_create_api_secret(body)
 
 Store LLM inference API secret
 
@@ -51,16 +51,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateApiSecretRequest() # V1CreateApiSecretRequest | 
 
     try:
         # Store LLM inference API secret
-        api_response = api_instance.l_lm_proxy_create_api_secret(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_api_secret:\n")
+        api_response = api_instance.fixpoint_create_api_secret(body)
+        print("The response of FixpointApi->fixpoint_create_api_secret:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_api_secret: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_api_secret: %s\n" % e)
 ```
 
 
@@ -94,8 +94,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_app_logs**
-> V1CreateAppLogsResponse l_lm_proxy_create_app_logs(body)
+# **fixpoint_create_app_logs**
+> V1CreateAppLogsResponse fixpoint_create_app_logs(body)
 
 Create application logs
 
@@ -121,16 +121,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateAppLogsRequest() # V1CreateAppLogsRequest | 
 
     try:
         # Create application logs
-        api_response = api_instance.l_lm_proxy_create_app_logs(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_app_logs:\n")
+        api_response = api_instance.fixpoint_create_app_logs(body)
+        print("The response of FixpointApi->fixpoint_create_app_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_app_logs: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_app_logs: %s\n" % e)
 ```
 
 
@@ -164,8 +164,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_dataset**
-> V1CreateDatasetResponse l_lm_proxy_create_dataset(body)
+# **fixpoint_create_dataset**
+> V1CreateDatasetResponse fixpoint_create_dataset(body)
 
 Create LLM dataset
 
@@ -189,16 +189,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateDatasetRequest() # V1CreateDatasetRequest | 
 
     try:
         # Create LLM dataset
-        api_response = api_instance.l_lm_proxy_create_dataset(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_dataset:\n")
+        api_response = api_instance.fixpoint_create_dataset(body)
+        print("The response of FixpointApi->fixpoint_create_dataset:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_dataset: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_dataset: %s\n" % e)
 ```
 
 
@@ -232,8 +232,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_likes**
-> V1CreateLikesResponse l_lm_proxy_create_likes(body)
+# **fixpoint_create_likes**
+> V1CreateLikesResponse fixpoint_create_likes(body)
 
 Add LLM log feedback (\"likes\")
 
@@ -259,16 +259,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateLikesRequest() # V1CreateLikesRequest | 
 
     try:
         # Add LLM log feedback (\"likes\")
-        api_response = api_instance.l_lm_proxy_create_likes(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_likes:\n")
+        api_response = api_instance.fixpoint_create_likes(body)
+        print("The response of FixpointApi->fixpoint_create_likes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_likes: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_likes: %s\n" % e)
 ```
 
 
@@ -302,8 +302,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_log_attribute**
-> V1CreateLogAttributeResponse l_lm_proxy_create_log_attribute(body)
+# **fixpoint_create_log_attribute**
+> V1CreateLogAttributeResponse fixpoint_create_log_attribute(body)
 
 Attach attribute to LLM log
 
@@ -327,16 +327,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateLogAttributeRequest() # V1CreateLogAttributeRequest | 
 
     try:
         # Attach attribute to LLM log
-        api_response = api_instance.l_lm_proxy_create_log_attribute(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_log_attribute:\n")
+        api_response = api_instance.fixpoint_create_log_attribute(body)
+        print("The response of FixpointApi->fixpoint_create_log_attribute:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_log_attribute: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_log_attribute: %s\n" % e)
 ```
 
 
@@ -370,8 +370,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_open_ai_chat_input_log**
-> V1OpenAIChatInputLog l_lm_proxy_create_open_ai_chat_input_log(model_name, body)
+# **fixpoint_create_open_ai_chat_input_log**
+> V1OpenAIChatInputLog fixpoint_create_open_ai_chat_input_log(model_name, body)
 
 Create an LLM input log
 
@@ -382,7 +382,7 @@ Store an LLM inference request's input in Fixpoint (aka the \"LLM input log\").
 
 ```python
 import fixpoint_openapi
-from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_input_log_request import LLMProxyCreateOpenAIChatInputLogRequest
+from fixpoint_openapi.models.fixpoint_create_open_ai_chat_input_log_request import FixpointCreateOpenAIChatInputLogRequest
 from fixpoint_openapi.models.v1_open_ai_chat_input_log import V1OpenAIChatInputLog
 from fixpoint_openapi.rest import ApiException
 from pprint import pprint
@@ -397,17 +397,17 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     model_name = 'model_name_example' # str | 
-    body = fixpoint_openapi.LLMProxyCreateOpenAIChatInputLogRequest() # LLMProxyCreateOpenAIChatInputLogRequest | 
+    body = fixpoint_openapi.FixpointCreateOpenAIChatInputLogRequest() # FixpointCreateOpenAIChatInputLogRequest | 
 
     try:
         # Create an LLM input log
-        api_response = api_instance.l_lm_proxy_create_open_ai_chat_input_log(model_name, body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_open_ai_chat_input_log:\n")
+        api_response = api_instance.fixpoint_create_open_ai_chat_input_log(model_name, body)
+        print("The response of FixpointApi->fixpoint_create_open_ai_chat_input_log:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_open_ai_chat_input_log: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_open_ai_chat_input_log: %s\n" % e)
 ```
 
 
@@ -418,7 +418,7 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_name** | **str**|  | 
- **body** | [**LLMProxyCreateOpenAIChatInputLogRequest**](LLMProxyCreateOpenAIChatInputLogRequest.md)|  | 
+ **body** | [**FixpointCreateOpenAIChatInputLogRequest**](FixpointCreateOpenAIChatInputLogRequest.md)|  | 
 
 ### Return type
 
@@ -442,8 +442,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_open_ai_chat_output_log**
-> V1OpenAIChatOutputLog l_lm_proxy_create_open_ai_chat_output_log(model_name, body)
+# **fixpoint_create_open_ai_chat_output_log**
+> V1OpenAIChatOutputLog fixpoint_create_open_ai_chat_output_log(model_name, body)
 
 Create an LLM output log
 
@@ -454,7 +454,7 @@ Store an LLM inference request's output in Fixpoint (aka the \"LLM output log\")
 
 ```python
 import fixpoint_openapi
-from fixpoint_openapi.models.llm_proxy_create_open_ai_chat_output_log_request import LLMProxyCreateOpenAIChatOutputLogRequest
+from fixpoint_openapi.models.fixpoint_create_open_ai_chat_output_log_request import FixpointCreateOpenAIChatOutputLogRequest
 from fixpoint_openapi.models.v1_open_ai_chat_output_log import V1OpenAIChatOutputLog
 from fixpoint_openapi.rest import ApiException
 from pprint import pprint
@@ -469,17 +469,17 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     model_name = 'model_name_example' # str | 
-    body = fixpoint_openapi.LLMProxyCreateOpenAIChatOutputLogRequest() # LLMProxyCreateOpenAIChatOutputLogRequest | 
+    body = fixpoint_openapi.FixpointCreateOpenAIChatOutputLogRequest() # FixpointCreateOpenAIChatOutputLogRequest | 
 
     try:
         # Create an LLM output log
-        api_response = api_instance.l_lm_proxy_create_open_ai_chat_output_log(model_name, body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_open_ai_chat_output_log:\n")
+        api_response = api_instance.fixpoint_create_open_ai_chat_output_log(model_name, body)
+        print("The response of FixpointApi->fixpoint_create_open_ai_chat_output_log:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_open_ai_chat_output_log: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_open_ai_chat_output_log: %s\n" % e)
 ```
 
 
@@ -490,7 +490,7 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_name** | **str**|  | 
- **body** | [**LLMProxyCreateOpenAIChatOutputLogRequest**](LLMProxyCreateOpenAIChatOutputLogRequest.md)|  | 
+ **body** | [**FixpointCreateOpenAIChatOutputLogRequest**](FixpointCreateOpenAIChatOutputLogRequest.md)|  | 
 
 ### Return type
 
@@ -514,8 +514,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_create_routing_config**
-> V1RoutingConfig l_lm_proxy_create_routing_config(body)
+# **fixpoint_create_routing_config**
+> V1RoutingConfig fixpoint_create_routing_config(body)
 
 Create LLM routing config
 
@@ -541,16 +541,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     body = fixpoint_openapi.V1CreateRoutingConfigRequest() # V1CreateRoutingConfigRequest | 
 
     try:
         # Create LLM routing config
-        api_response = api_instance.l_lm_proxy_create_routing_config(body)
-        print("The response of LLMProxyApi->l_lm_proxy_create_routing_config:\n")
+        api_response = api_instance.fixpoint_create_routing_config(body)
+        print("The response of FixpointApi->fixpoint_create_routing_config:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_create_routing_config: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_create_routing_config: %s\n" % e)
 ```
 
 
@@ -584,8 +584,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_delete_log_attribute**
-> V1DeleteLogAttributeResponse l_lm_proxy_delete_log_attribute(name)
+# **fixpoint_delete_log_attribute**
+> V1DeleteLogAttributeResponse fixpoint_delete_log_attribute(name)
 
 Remove LLM log attribute
 
@@ -608,16 +608,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     name = 'name_example' # str | 
 
     try:
         # Remove LLM log attribute
-        api_response = api_instance.l_lm_proxy_delete_log_attribute(name)
-        print("The response of LLMProxyApi->l_lm_proxy_delete_log_attribute:\n")
+        api_response = api_instance.fixpoint_delete_log_attribute(name)
+        print("The response of FixpointApi->fixpoint_delete_log_attribute:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_delete_log_attribute: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_delete_log_attribute: %s\n" % e)
 ```
 
 
@@ -651,8 +651,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_api_secrets**
-> V1ListApiSecretsResponse l_lm_proxy_list_api_secrets()
+# **fixpoint_list_api_secrets**
+> V1ListApiSecretsResponse fixpoint_list_api_secrets()
 
 List LLM inference API secrets
 
@@ -675,15 +675,15 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
 
     try:
         # List LLM inference API secrets
-        api_response = api_instance.l_lm_proxy_list_api_secrets()
-        print("The response of LLMProxyApi->l_lm_proxy_list_api_secrets:\n")
+        api_response = api_instance.fixpoint_list_api_secrets()
+        print("The response of FixpointApi->fixpoint_list_api_secrets:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_api_secrets: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_api_secrets: %s\n" % e)
 ```
 
 
@@ -714,8 +714,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_app_logs**
-> V1ListAppLogsResponse l_lm_proxy_list_app_logs(trace_id=trace_id)
+# **fixpoint_list_app_logs**
+> V1ListAppLogsResponse fixpoint_list_app_logs(trace_id=trace_id)
 
 List application logs
 
@@ -740,16 +740,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     trace_id = 'trace_id_example' # str |  (optional)
 
     try:
         # List application logs
-        api_response = api_instance.l_lm_proxy_list_app_logs(trace_id=trace_id)
-        print("The response of LLMProxyApi->l_lm_proxy_list_app_logs:\n")
+        api_response = api_instance.fixpoint_list_app_logs(trace_id=trace_id)
+        print("The response of FixpointApi->fixpoint_list_app_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_app_logs: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_app_logs: %s\n" % e)
 ```
 
 
@@ -783,8 +783,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_datasets**
-> V1ListDatasetsResponse l_lm_proxy_list_datasets(dataset_name=dataset_name, mode=mode)
+# **fixpoint_list_datasets**
+> V1ListDatasetsResponse fixpoint_list_datasets(dataset_name=dataset_name, mode=mode)
 
 List LLM datasets
 
@@ -807,17 +807,17 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     dataset_name = 'dataset_name_example' # str |  (optional)
     mode = 'MODE_UNSPECIFIED' # str |  (optional) (default to 'MODE_UNSPECIFIED')
 
     try:
         # List LLM datasets
-        api_response = api_instance.l_lm_proxy_list_datasets(dataset_name=dataset_name, mode=mode)
-        print("The response of LLMProxyApi->l_lm_proxy_list_datasets:\n")
+        api_response = api_instance.fixpoint_list_datasets(dataset_name=dataset_name, mode=mode)
+        print("The response of FixpointApi->fixpoint_list_datasets:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_datasets: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_datasets: %s\n" % e)
 ```
 
 
@@ -852,8 +852,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_likes**
-> V1ListLikesResponse l_lm_proxy_list_likes(page_size=page_size, log_name=log_name, user_id=user_id, origin=origin, thumbs_reaction=thumbs_reaction)
+# **fixpoint_list_likes**
+> V1ListLikesResponse fixpoint_list_likes(page_size=page_size, log_name=log_name, user_id=user_id, origin=origin, thumbs_reaction=thumbs_reaction)
 
 List LLM log feedback (\"likes\")
 
@@ -876,7 +876,7 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     page_size = 56 # int |  (optional)
     log_name = 'log_name_example' # str |  (optional)
     user_id = 'user_id_example' # str |  (optional)
@@ -885,11 +885,11 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 
     try:
         # List LLM log feedback (\"likes\")
-        api_response = api_instance.l_lm_proxy_list_likes(page_size=page_size, log_name=log_name, user_id=user_id, origin=origin, thumbs_reaction=thumbs_reaction)
-        print("The response of LLMProxyApi->l_lm_proxy_list_likes:\n")
+        api_response = api_instance.fixpoint_list_likes(page_size=page_size, log_name=log_name, user_id=user_id, origin=origin, thumbs_reaction=thumbs_reaction)
+        print("The response of FixpointApi->fixpoint_list_likes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_likes: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_likes: %s\n" % e)
 ```
 
 
@@ -927,8 +927,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_log_attributes**
-> V1ListLogAttributesResponse l_lm_proxy_list_log_attributes(log_name=log_name)
+# **fixpoint_list_log_attributes**
+> V1ListLogAttributesResponse fixpoint_list_log_attributes(log_name=log_name)
 
 List attributes on an LLM log
 
@@ -951,16 +951,16 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     log_name = 'log_name_example' # str |  (optional)
 
     try:
         # List attributes on an LLM log
-        api_response = api_instance.l_lm_proxy_list_log_attributes(log_name=log_name)
-        print("The response of LLMProxyApi->l_lm_proxy_list_log_attributes:\n")
+        api_response = api_instance.fixpoint_list_log_attributes(log_name=log_name)
+        print("The response of FixpointApi->fixpoint_list_log_attributes:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_log_attributes: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_log_attributes: %s\n" % e)
 ```
 
 
@@ -994,8 +994,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_open_ai_chat_logs**
-> V1ListOpenAIChatLogsResponse l_lm_proxy_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
+# **fixpoint_list_open_ai_chat_logs**
+> V1ListOpenAIChatLogsResponse fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
 
 List LLM logs
 
@@ -1018,7 +1018,7 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     parent = 'parent_example' # str | The parent resource collection. In this case, \"/openai_chats/{model_name}\".
     page_size = 56 # int |  (optional)
     page_token = 'page_token_example' # str |  (optional)
@@ -1032,11 +1032,11 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 
     try:
         # List LLM logs
-        api_response = api_instance.l_lm_proxy_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
-        print("The response of LLMProxyApi->l_lm_proxy_list_open_ai_chat_logs:\n")
+        api_response = api_instance.fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
+        print("The response of FixpointApi->fixpoint_list_open_ai_chat_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_open_ai_chat_logs: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_open_ai_chat_logs: %s\n" % e)
 ```
 
 
@@ -1079,8 +1079,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_list_routing_configs**
-> V1ListRoutingConfigsResponse l_lm_proxy_list_routing_configs()
+# **fixpoint_list_routing_configs**
+> V1ListRoutingConfigsResponse fixpoint_list_routing_configs()
 
 List LLM routing configs
 
@@ -1103,15 +1103,15 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
 
     try:
         # List LLM routing configs
-        api_response = api_instance.l_lm_proxy_list_routing_configs()
-        print("The response of LLMProxyApi->l_lm_proxy_list_routing_configs:\n")
+        api_response = api_instance.fixpoint_list_routing_configs()
+        print("The response of FixpointApi->fixpoint_list_routing_configs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_list_routing_configs: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_list_routing_configs: %s\n" % e)
 ```
 
 
@@ -1142,8 +1142,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_post_dataset_logs**
-> V1PostDatasetLogsResponse l_lm_proxy_post_dataset_logs(name, body)
+# **fixpoint_post_dataset_logs**
+> V1PostDatasetLogsResponse fixpoint_post_dataset_logs(name, body)
 
 Add logs to a dataset
 
@@ -1152,7 +1152,7 @@ Add logs to a dataset
 
 ```python
 import fixpoint_openapi
-from fixpoint_openapi.models.llm_proxy_post_dataset_logs_request import LLMProxyPostDatasetLogsRequest
+from fixpoint_openapi.models.fixpoint_post_dataset_logs_request import FixpointPostDatasetLogsRequest
 from fixpoint_openapi.models.v1_post_dataset_logs_response import V1PostDatasetLogsResponse
 from fixpoint_openapi.rest import ApiException
 from pprint import pprint
@@ -1167,17 +1167,17 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     name = 'name_example' # str | 
-    body = fixpoint_openapi.LLMProxyPostDatasetLogsRequest() # LLMProxyPostDatasetLogsRequest | 
+    body = fixpoint_openapi.FixpointPostDatasetLogsRequest() # FixpointPostDatasetLogsRequest | 
 
     try:
         # Add logs to a dataset
-        api_response = api_instance.l_lm_proxy_post_dataset_logs(name, body)
-        print("The response of LLMProxyApi->l_lm_proxy_post_dataset_logs:\n")
+        api_response = api_instance.fixpoint_post_dataset_logs(name, body)
+        print("The response of FixpointApi->fixpoint_post_dataset_logs:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_post_dataset_logs: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_post_dataset_logs: %s\n" % e)
 ```
 
 
@@ -1188,7 +1188,7 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**|  | 
- **body** | [**LLMProxyPostDatasetLogsRequest**](LLMProxyPostDatasetLogsRequest.md)|  | 
+ **body** | [**FixpointPostDatasetLogsRequest**](FixpointPostDatasetLogsRequest.md)|  | 
 
 ### Return type
 
@@ -1212,8 +1212,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **l_lm_proxy_update_spending_totals**
-> V1RoutingConfig l_lm_proxy_update_spending_totals(route_config_id, body)
+# **fixpoint_update_spending_totals**
+> V1RoutingConfig fixpoint_update_spending_totals(route_config_id, body)
 
 Update routing config spending totals
 
@@ -1224,7 +1224,7 @@ Update spending totals on a routing config.
 
 ```python
 import fixpoint_openapi
-from fixpoint_openapi.models.llm_proxy_update_spending_totals_request import LLMProxyUpdateSpendingTotalsRequest
+from fixpoint_openapi.models.fixpoint_update_spending_totals_request import FixpointUpdateSpendingTotalsRequest
 from fixpoint_openapi.models.v1_routing_config import V1RoutingConfig
 from fixpoint_openapi.rest import ApiException
 from pprint import pprint
@@ -1239,17 +1239,17 @@ configuration = fixpoint_openapi.Configuration(
 # Enter a context with an instance of the API client
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fixpoint_openapi.LLMProxyApi(api_client)
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
     route_config_id = 'route_config_id_example' # str | 
-    body = fixpoint_openapi.LLMProxyUpdateSpendingTotalsRequest() # LLMProxyUpdateSpendingTotalsRequest | 
+    body = fixpoint_openapi.FixpointUpdateSpendingTotalsRequest() # FixpointUpdateSpendingTotalsRequest | 
 
     try:
         # Update routing config spending totals
-        api_response = api_instance.l_lm_proxy_update_spending_totals(route_config_id, body)
-        print("The response of LLMProxyApi->l_lm_proxy_update_spending_totals:\n")
+        api_response = api_instance.fixpoint_update_spending_totals(route_config_id, body)
+        print("The response of FixpointApi->fixpoint_update_spending_totals:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling LLMProxyApi->l_lm_proxy_update_spending_totals: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_update_spending_totals: %s\n" % e)
 ```
 
 
@@ -1260,7 +1260,7 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **route_config_id** | **str**|  | 
- **body** | [**LLMProxyUpdateSpendingTotalsRequest**](LLMProxyUpdateSpendingTotalsRequest.md)|  | 
+ **body** | [**FixpointUpdateSpendingTotalsRequest**](FixpointUpdateSpendingTotalsRequest.md)|  | 
 
 ### Return type
 

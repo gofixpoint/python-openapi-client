@@ -1,4 +1,4 @@
-# Llmproxyv1Model
+# Fixpointv1Model
 
 
 ## Properties
@@ -13,19 +13,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from fixpoint_openapi.models.llmproxyv1_model import Llmproxyv1Model
+from fixpoint_openapi.models.fixpointv1_model import Fixpointv1Model
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of Llmproxyv1Model from a JSON string
-llmproxyv1_model_instance = Llmproxyv1Model.from_json(json)
+# create an instance of Fixpointv1Model from a JSON string
+fixpointv1_model_instance = Fixpointv1Model.from_json(json)
 # print the JSON string representation of the object
-print(Llmproxyv1Model.to_json())
+print(Fixpointv1Model.to_json())
 
 # convert the object into a dict
-llmproxyv1_model_dict = llmproxyv1_model_instance.to_dict()
-# create an instance of Llmproxyv1Model from a dict
-llmproxyv1_model_form_dict = llmproxyv1_model.from_dict(llmproxyv1_model_dict)
+fixpointv1_model_dict = fixpointv1_model_instance.to_dict()
+# create an instance of Fixpointv1Model from a dict
+fixpointv1_model_form_dict = fixpointv1_model.from_dict(fixpointv1_model_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
