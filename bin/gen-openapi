@@ -14,12 +14,14 @@ additional_properties+=("infoContact='Fixpoint <team@fixpoint.co>'")
 additional_properties+=("licenseInfo=License :: OSI Approved :: Apache Software License")
 additional_properties+=("packageVersion=0.1.0")
 
-# addProps=$(IFS=','; echo "${additional_properties[*]}")
-# echo $addProps
-# exit
+if [[ -n "${OPENAPI_SCHEMA_URL:-}" ]]; then
+    openapi_url="${OPENAPI_SCHEMA_URL}"
+else
+    openapi_url="https://docs.fixpoint.co/gen/openapiv2/fixpoint/llmproxy/v1/service.swagger.json"
+fi
 
 openapi-generator generate \
-    -i https://docs.fixpoint.co/gen/openapiv2/fixpoint/llmproxy/v1/service.swagger.json \
+    -i "${openapi_url}" \
     -g python \
     -o . \
     --package-name fixpoint_openapi \
