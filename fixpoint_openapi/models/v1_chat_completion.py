@@ -19,18 +19,23 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_tool_call import V1ToolCall
+from fixpoint_openapi.models.v1_chat_completion_choice import V1ChatCompletionChoice
+from fixpoint_openapi.models.v1_chat_completion_usage import V1ChatCompletionUsage
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1OutputMessage(BaseModel):
+class V1ChatCompletion(BaseModel):
     """
-    V1OutputMessage
+    V1ChatCompletion
     """ # noqa: E501
-    role: StrictStr
-    content: Optional[StrictStr] = Field(default=None, description="If the model produced a plain text completion, this will be set. If the model only made tool calls, this will be empty.")
-    tool_calls: Optional[List[V1ToolCall]] = Field(default=None, description="Optional tool calls, if the model called any.", alias="toolCalls")
-    __properties: ClassVar[List[str]] = ["role", "content", "toolCalls"]
+    id: StrictStr
+    external_id: Optional[StrictStr] = Field(default=None, alias="externalId")
+    model: StrictStr = Field(description="The model used for inference. Normally, we identify the model name with `model_name` field, but for OpenAI compatibility we just use `model` here.")
+    tracing: Optional[V1Tracing] = None
+    choices: List[V1ChatCompletionChoice]
+    usage: V1ChatCompletionUsage
+    __properties: ClassVar[List[str]] = ["id", "externalId", "model", "tracing", "choices", "usage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +55,7 @@ class V1OutputMessage(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a JSON string"""
+        """Create an instance of V1ChatCompletion from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -62,8 +67,10 @@ class V1OutputMessage(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "id",
         ])
 
         _dict = self.model_dump(
@@ -71,18 +78,24 @@ class V1OutputMessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in tool_calls (list)
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in choices (list)
         _items = []
-        if self.tool_calls:
-            for _item in self.tool_calls:
+        if self.choices:
+            for _item in self.choices:
                 if _item:
                     _items.append(_item.to_dict())
-            _dict['toolCalls'] = _items
+            _dict['choices'] = _items
+        # override the default output from pydantic by calling `to_dict()` of usage
+        if self.usage:
+            _dict['usage'] = self.usage.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1OutputMessage from a dict"""
+        """Create an instance of V1ChatCompletion from a dict"""
         if obj is None:
             return None
 
@@ -90,9 +103,12 @@ class V1OutputMessage(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "role": obj.get("role"),
-            "content": obj.get("content"),
-            "toolCalls": [V1ToolCall.from_dict(_item) for _item in obj["toolCalls"]] if obj.get("toolCalls") is not None else None
+            "id": obj.get("id"),
+            "externalId": obj.get("externalId"),
+            "model": obj.get("model"),
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
+            "choices": [V1ChatCompletionChoice.from_dict(_item) for _item in obj["choices"]] if obj.get("choices") is not None else None,
+            "usage": V1ChatCompletionUsage.from_dict(obj["usage"]) if obj.get("usage") is not None else None
         })
         return _obj
 

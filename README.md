@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *FixpointApi* | [**fixpoint_create_dataset**](docs/FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
 *FixpointApi* | [**fixpoint_create_likes**](docs/FixpointApi.md#fixpoint_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
 *FixpointApi* | [**fixpoint_create_log_attribute**](docs/FixpointApi.md#fixpoint_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
+*FixpointApi* | [**fixpoint_create_multi_llm_chat_completion**](docs/FixpointApi.md#fixpoint_create_multi_llm_chat_completion) | **POST** /v1/chat/completions/multi_llm | 
 *FixpointApi* | [**fixpoint_create_open_ai_chat_input_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
 *FixpointApi* | [**fixpoint_create_open_ai_chat_output_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
 *FixpointApi* | [**fixpoint_create_routing_config**](docs/FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
@@ -121,6 +122,9 @@ Class | Method | HTTP request | Description
  - [V1ApiSecretProvider](docs/V1ApiSecretProvider.md)
  - [V1AppLog](docs/V1AppLog.md)
  - [V1AttributeFilters](docs/V1AttributeFilters.md)
+ - [V1ChatCompletion](docs/V1ChatCompletion.md)
+ - [V1ChatCompletionChoice](docs/V1ChatCompletionChoice.md)
+ - [V1ChatCompletionUsage](docs/V1ChatCompletionUsage.md)
  - [V1CreateApiSecretRequest](docs/V1CreateApiSecretRequest.md)
  - [V1CreateAppLogsRequest](docs/V1CreateAppLogsRequest.md)
  - [V1CreateAppLogsResponse](docs/V1CreateAppLogsResponse.md)
@@ -130,6 +134,8 @@ Class | Method | HTTP request | Description
  - [V1CreateLikesResponse](docs/V1CreateLikesResponse.md)
  - [V1CreateLogAttributeRequest](docs/V1CreateLogAttributeRequest.md)
  - [V1CreateLogAttributeResponse](docs/V1CreateLogAttributeResponse.md)
+ - [V1CreateMultiLLMChatCompletionRequest](docs/V1CreateMultiLLMChatCompletionRequest.md)
+ - [V1CreateMultiLLMChatCompletionRequestModel](docs/V1CreateMultiLLMChatCompletionRequestModel.md)
  - [V1CreateRoutingConfigRequest](docs/V1CreateRoutingConfigRequest.md)
  - [V1Dataset](docs/V1Dataset.md)
  - [V1DatasetFilters](docs/V1DatasetFilters.md)
@@ -148,6 +154,7 @@ Class | Method | HTTP request | Description
  - [V1ListRoutingConfigsResponse](docs/V1ListRoutingConfigsResponse.md)
  - [V1LogAttribute](docs/V1LogAttribute.md)
  - [V1Mode](docs/V1Mode.md)
+ - [V1MultiLLMChatCompletion](docs/V1MultiLLMChatCompletion.md)
  - [V1OpenAIChatInputLog](docs/V1OpenAIChatInputLog.md)
  - [V1OpenAIChatLog](docs/V1OpenAIChatLog.md)
  - [V1OpenAIChatLogsFilters](docs/V1OpenAIChatLogsFilters.md)
@@ -164,6 +171,7 @@ Class | Method | HTTP request | Description
  - [V1TerminalState](docs/V1TerminalState.md)
  - [V1ThumbsReaction](docs/V1ThumbsReaction.md)
  - [V1ToolCall](docs/V1ToolCall.md)
+ - [V1Tracing](docs/V1Tracing.md)
  - [V1UsageTotals](docs/V1UsageTotals.md)
 
 

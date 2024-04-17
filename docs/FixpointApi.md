@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**fixpoint_create_dataset**](FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
 [**fixpoint_create_likes**](FixpointApi.md#fixpoint_create_likes) | **POST** /v1/likes | Add LLM log feedback (\&quot;likes\&quot;)
 [**fixpoint_create_log_attribute**](FixpointApi.md#fixpoint_create_log_attribute) | **POST** /v1/attributes | Attach attribute to LLM log
+[**fixpoint_create_multi_llm_chat_completion**](FixpointApi.md#fixpoint_create_multi_llm_chat_completion) | **POST** /v1/chat/completions/multi_llm | 
 [**fixpoint_create_open_ai_chat_input_log**](FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
 [**fixpoint_create_open_ai_chat_output_log**](FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
 [**fixpoint_create_routing_config**](FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
@@ -351,6 +352,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1CreateLogAttributeResponse**](V1CreateLogAttributeResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fixpoint_create_multi_llm_chat_completion**
+> V1MultiLLMChatCompletion fixpoint_create_multi_llm_chat_completion(body)
+
+
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request import V1CreateMultiLLMChatCompletionRequest
+from fixpoint_openapi.models.v1_multi_llm_chat_completion import V1MultiLLMChatCompletion
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    body = fixpoint_openapi.V1CreateMultiLLMChatCompletionRequest() # V1CreateMultiLLMChatCompletionRequest | 
+
+    try:
+        api_response = api_instance.fixpoint_create_multi_llm_chat_completion(body)
+        print("The response of FixpointApi->fixpoint_create_multi_llm_chat_completion:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_create_multi_llm_chat_completion: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**V1CreateMultiLLMChatCompletionRequest**](V1CreateMultiLLMChatCompletionRequest.md)|  | 
+
+### Return type
+
+[**V1MultiLLMChatCompletion**](V1MultiLLMChatCompletion.md)
 
 ### Authorization
 
