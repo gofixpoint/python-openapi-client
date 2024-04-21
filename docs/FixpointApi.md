@@ -19,7 +19,7 @@ Method | HTTP request | Description
 [**fixpoint_list_datasets**](FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
 [**fixpoint_list_likes**](FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
 [**fixpoint_list_log_attributes**](FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
-[**fixpoint_list_open_ai_chat_logs**](FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
+[**fixpoint_list_open_ai_chat_logs**](FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | DEPRECATED: List LLM logs
 [**fixpoint_list_routing_configs**](FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
 [**fixpoint_post_dataset_logs**](FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
 [**fixpoint_update_spending_totals**](FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
@@ -1063,9 +1063,9 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fixpoint_list_open_ai_chat_logs**
-> V1ListOpenAIChatLogsResponse fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
+> V1ListOpenAIChatLogsResponse fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, filters_tracing_filters_session_ids=filters_tracing_filters_session_ids, filters_tracing_filters_trace_ids=filters_tracing_filters_trace_ids, filters_tracing_filters_span_ids=filters_tracing_filters_span_ids, filters_tracing_filters_parent_span_ids=filters_tracing_filters_parent_span_ids, mode=mode, count_entries=count_entries)
 
-List LLM logs
+DEPRECATED: List LLM logs
 
 ### Example
 
@@ -1095,12 +1095,16 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
     filters_attribute_filters_keys = ['filters_attribute_filters_keys_example'] # List[str] |  (optional)
     filters_attribute_filters_values = ['filters_attribute_filters_values_example'] # List[str] |  (optional)
     filters_dataset_filters_dataset_names = ['filters_dataset_filters_dataset_names_example'] # List[str] |  (optional)
+    filters_tracing_filters_session_ids = ['filters_tracing_filters_session_ids_example'] # List[str] |  (optional)
+    filters_tracing_filters_trace_ids = ['filters_tracing_filters_trace_ids_example'] # List[str] |  (optional)
+    filters_tracing_filters_span_ids = ['filters_tracing_filters_span_ids_example'] # List[str] |  (optional)
+    filters_tracing_filters_parent_span_ids = ['filters_tracing_filters_parent_span_ids_example'] # List[str] |  (optional)
     mode = 'MODE_UNSPECIFIED' # str |  (optional) (default to 'MODE_UNSPECIFIED')
     count_entries = True # bool | Whether to also return a count of all the entries matching the list query. (optional)
 
     try:
-        # List LLM logs
-        api_response = api_instance.fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, mode=mode, count_entries=count_entries)
+        # DEPRECATED: List LLM logs
+        api_response = api_instance.fixpoint_list_open_ai_chat_logs(parent, page_size=page_size, page_token=page_token, filters_relative_datetime_filters_from_s=filters_relative_datetime_filters_from_s, filters_userfeedback_filter_thumbs_reaction=filters_userfeedback_filter_thumbs_reaction, filters_attribute_filters_keys=filters_attribute_filters_keys, filters_attribute_filters_values=filters_attribute_filters_values, filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names, filters_tracing_filters_session_ids=filters_tracing_filters_session_ids, filters_tracing_filters_trace_ids=filters_tracing_filters_trace_ids, filters_tracing_filters_span_ids=filters_tracing_filters_span_ids, filters_tracing_filters_parent_span_ids=filters_tracing_filters_parent_span_ids, mode=mode, count_entries=count_entries)
         print("The response of FixpointApi->fixpoint_list_open_ai_chat_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -1122,6 +1126,10 @@ Name | Type | Description  | Notes
  **filters_attribute_filters_keys** | [**List[str]**](str.md)|  | [optional] 
  **filters_attribute_filters_values** | [**List[str]**](str.md)|  | [optional] 
  **filters_dataset_filters_dataset_names** | [**List[str]**](str.md)|  | [optional] 
+ **filters_tracing_filters_session_ids** | [**List[str]**](str.md)|  | [optional] 
+ **filters_tracing_filters_trace_ids** | [**List[str]**](str.md)|  | [optional] 
+ **filters_tracing_filters_span_ids** | [**List[str]**](str.md)|  | [optional] 
+ **filters_tracing_filters_parent_span_ids** | [**List[str]**](str.md)|  | [optional] 
  **mode** | **str**|  | [optional] [default to &#39;MODE_UNSPECIFIED&#39;]
  **count_entries** | **bool**| Whether to also return a count of all the entries matching the list query. | [optional] 
 

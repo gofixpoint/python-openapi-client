@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **model_name** | **str** | The model name that produced the log. | [optional] 
 **app_name** | **str** |  | [optional] 
 **data_source_name** | **str** |  | [optional] 
-**session_name** | **str** |  | [optional] 
+**tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 **input_log** | [**V1OpenAIChatInputLog**](V1OpenAIChatInputLog.md) |  | [optional] 
 **output_log** | [**V1OpenAIChatOutputLog**](V1OpenAIChatOutputLog.md) |  | [optional] 
 **created_at** | **datetime** | The created_at timestamp is the same as the input_log.created_at timestamp. | [optional] 

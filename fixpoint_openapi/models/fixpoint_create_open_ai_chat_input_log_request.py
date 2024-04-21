@@ -20,7 +20,9 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from fixpoint_openapi.models.v1_input_message import V1InputMessage
+from fixpoint_openapi.models.v1_log_attribute import V1LogAttribute
 from fixpoint_openapi.models.v1_mode import V1Mode
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,13 +30,13 @@ class FixpointCreateOpenAIChatInputLogRequest(BaseModel):
     """
     FixpointCreateOpenAIChatInputLogRequest
     """ # noqa: E501
-    session_name: Optional[StrictStr] = Field(default=None, alias="sessionName")
     messages: Optional[List[V1InputMessage]] = None
     temperature: Optional[Union[StrictFloat, StrictInt]] = None
-    trace_id: Optional[StrictStr] = Field(default=None, alias="traceId")
     user_id: Optional[StrictStr] = Field(default=None, alias="userId")
+    tracing: Optional[V1Tracing] = None
     mode: Optional[V1Mode] = None
-    __properties: ClassVar[List[str]] = ["sessionName", "messages", "temperature", "traceId", "userId", "mode"]
+    log_attributes: Optional[List[V1LogAttribute]] = Field(default=None, description="Optional attributes to attach to LLM input log when creating it.", alias="logAttributes")
+    __properties: ClassVar[List[str]] = ["messages", "temperature", "userId", "tracing", "mode", "logAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,6 +84,16 @@ class FixpointCreateOpenAIChatInputLogRequest(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['messages'] = _items
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in log_attributes (list)
+        _items = []
+        if self.log_attributes:
+            for _item in self.log_attributes:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['logAttributes'] = _items
         return _dict
 
     @classmethod
@@ -94,12 +106,12 @@ class FixpointCreateOpenAIChatInputLogRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "sessionName": obj.get("sessionName"),
             "messages": [V1InputMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
             "temperature": obj.get("temperature"),
-            "traceId": obj.get("traceId"),
             "userId": obj.get("userId"),
-            "mode": obj.get("mode")
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
+            "mode": obj.get("mode"),
+            "logAttributes": [V1LogAttribute.from_dict(_item) for _item in obj["logAttributes"]] if obj.get("logAttributes") is not None else None
         })
         return _obj
 

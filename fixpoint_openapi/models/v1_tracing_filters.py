@@ -17,25 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from fixpoint_openapi.models.v1_input_message import V1InputMessage
-from fixpoint_openapi.models.v1_tracing import V1Tracing
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1OpenAIChatInputLog(BaseModel):
+class V1TracingFilters(BaseModel):
     """
-    V1OpenAIChatInputLog
+    Filter LLM logs to session, trace, or span info.  The top-level filter attributes (session_ids, trace_ids, etc.) combine with the \"AND\" filter, // while within a given field such as \"session_ids\", the items combine with the \"OR\" filter.  For example:    TracingFilters = {     session_ids: [\"session1\", \"session2\"],     trace_ids: [\"trace1\", \"trace2\"],   }  This will match all LLM logs that have either \"session1\" or \"session2\", and who also have either \"trace1\" or \"trace2\".
     """ # noqa: E501
-    name: Optional[StrictStr] = None
-    model_name: Optional[StrictStr] = Field(default=None, alias="modelName")
-    messages: Optional[List[V1InputMessage]] = None
-    temperature: Optional[Union[StrictFloat, StrictInt]] = None
-    created_at: Optional[datetime] = Field(default=None, alias="createdAt")
-    tracing: Optional[V1Tracing] = None
-    __properties: ClassVar[List[str]] = ["name", "modelName", "messages", "temperature", "createdAt", "tracing"]
+    session_ids: Optional[List[StrictStr]] = Field(default=None, alias="sessionIds")
+    trace_ids: Optional[List[StrictStr]] = Field(default=None, alias="traceIds")
+    span_ids: Optional[List[StrictStr]] = Field(default=None, alias="spanIds")
+    parent_span_ids: Optional[List[StrictStr]] = Field(default=None, alias="parentSpanIds")
+    __properties: ClassVar[List[str]] = ["sessionIds", "traceIds", "spanIds", "parentSpanIds"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +50,7 @@ class V1OpenAIChatInputLog(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1OpenAIChatInputLog from a JSON string"""
+        """Create an instance of V1TracingFilters from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,21 +71,11 @@ class V1OpenAIChatInputLog(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
-        _items = []
-        if self.messages:
-            for _item in self.messages:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['messages'] = _items
-        # override the default output from pydantic by calling `to_dict()` of tracing
-        if self.tracing:
-            _dict['tracing'] = self.tracing.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1OpenAIChatInputLog from a dict"""
+        """Create an instance of V1TracingFilters from a dict"""
         if obj is None:
             return None
 
@@ -98,12 +83,10 @@ class V1OpenAIChatInputLog(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "modelName": obj.get("modelName"),
-            "messages": [V1InputMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "temperature": obj.get("temperature"),
-            "createdAt": obj.get("createdAt"),
-            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None
+            "sessionIds": obj.get("sessionIds"),
+            "traceIds": obj.get("traceIds"),
+            "spanIds": obj.get("spanIds"),
+            "parentSpanIds": obj.get("parentSpanIds")
         })
         return _obj
 

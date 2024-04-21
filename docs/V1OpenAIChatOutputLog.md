@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **openai_id** | **str** |  | [optional] 
 **model_name** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 **choices** | [**List[V1OpenAIChatOutputLogChoice]**](V1OpenAIChatOutputLogChoice.md) |  | [optional] 
 **usage** | [**V1OpenAIChatOutputLogUsage**](V1OpenAIChatOutputLogUsage.md) |  | [optional] 
-**trace_id** | **str** |  | [optional] 
 
 ## Example
 

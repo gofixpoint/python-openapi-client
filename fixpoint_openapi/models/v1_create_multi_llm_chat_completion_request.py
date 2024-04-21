@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request_model import V1CreateMultiLLMChatCompletionRequestModel
 from fixpoint_openapi.models.v1_input_message import V1InputMessage
+from fixpoint_openapi.models.v1_log_attribute import V1LogAttribute
 from fixpoint_openapi.models.v1_mode import V1Mode
 from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
@@ -35,7 +36,8 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
     user_id: Optional[StrictStr] = Field(default=None, alias="userId")
     messages: Optional[List[V1InputMessage]] = None
     mode: Optional[V1Mode] = None
-    __properties: ClassVar[List[str]] = ["models", "tracing", "userId", "messages", "mode"]
+    log_attributes: Optional[List[V1LogAttribute]] = Field(default=None, description="Optional attributes to attach to LLM logs created.", alias="logAttributes")
+    __properties: ClassVar[List[str]] = ["models", "tracing", "userId", "messages", "mode", "logAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,6 +95,13 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['messages'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in log_attributes (list)
+        _items = []
+        if self.log_attributes:
+            for _item in self.log_attributes:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['logAttributes'] = _items
         return _dict
 
     @classmethod
@@ -109,7 +118,8 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
             "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
             "userId": obj.get("userId"),
             "messages": [V1InputMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "mode": obj.get("mode")
+            "mode": obj.get("mode"),
+            "logAttributes": [V1LogAttribute.from_dict(_item) for _item in obj["logAttributes"]] if obj.get("logAttributes") is not None else None
         })
         return _obj
 
