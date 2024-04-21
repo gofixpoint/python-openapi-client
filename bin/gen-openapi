@@ -28,6 +28,8 @@ else
     openapi_url="https://docs.fixpoint.co/gen/openapiv2/fixpoint/v1/service.swagger.json"
 fi
 
+echo "Generating Python SDK from OpenAPI schema: ${openapi_url}"
+
 openapi-generator generate \
     -i "${openapi_url}" \
     -g python \
