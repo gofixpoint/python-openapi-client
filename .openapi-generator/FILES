@@ -68,6 +68,7 @@ docs/V1TerminalState.md
 docs/V1ThumbsReaction.md
 docs/V1ToolCall.md
 docs/V1Tracing.md
+docs/V1TracingFilters.md
 docs/V1UsageTotals.md
 fixpoint_openapi/__init__.py
 fixpoint_openapi/api/__init__.py
@@ -141,6 +142,7 @@ fixpoint_openapi/models/v1_terminal_state.py
 fixpoint_openapi/models/v1_thumbs_reaction.py
 fixpoint_openapi/models/v1_tool_call.py
 fixpoint_openapi/models/v1_tracing.py
+fixpoint_openapi/models/v1_tracing_filters.py
 fixpoint_openapi/models/v1_usage_totals.py
 fixpoint_openapi/py.typed
 fixpoint_openapi/rest.py

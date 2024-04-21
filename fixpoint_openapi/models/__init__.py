@@ -78,4 +78,5 @@ from fixpoint_openapi.models.v1_terminal_state import V1TerminalState
 from fixpoint_openapi.models.v1_thumbs_reaction import V1ThumbsReaction
 from fixpoint_openapi.models.v1_tool_call import V1ToolCall
 from fixpoint_openapi.models.v1_tracing import V1Tracing
+from fixpoint_openapi.models.v1_tracing_filters import V1TracingFilters
 from fixpoint_openapi.models.v1_usage_totals import V1UsageTotals

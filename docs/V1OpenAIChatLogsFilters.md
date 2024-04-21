@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **userfeedback_filter** | [**V1LikeFilter**](V1LikeFilter.md) |  | [optional] 
 **attribute_filters** | [**V1AttributeFilters**](V1AttributeFilters.md) |  | [optional] 
 **dataset_filters** | [**V1DatasetFilters**](V1DatasetFilters.md) |  | [optional] 
+**tracing_filters** | [**V1TracingFilters**](V1TracingFilters.md) |  | [optional] 
 
 ## Example
 

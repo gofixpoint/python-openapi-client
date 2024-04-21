@@ -7,8 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **input_name** | **str** |  | [optional] 
 **openai_id** | **str** |  | [optional] 
-**session_name** | **str** |  | [optional] 
-**trace_id** | **str** |  | [optional] 
+**tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 **mode** | [**V1Mode**](V1Mode.md) |  | [optional] 
 **choices** | [**List[V1OpenAIChatOutputLogChoice]**](V1OpenAIChatOutputLogChoice.md) |  | [optional] 
 **usage** | [**V1OpenAIChatOutputLogUsage**](V1OpenAIChatOutputLogUsage.md) |  | [optional] 

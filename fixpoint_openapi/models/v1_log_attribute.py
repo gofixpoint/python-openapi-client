@@ -27,7 +27,7 @@ class V1LogAttribute(BaseModel):
     V1LogAttribute
     """ # noqa: E501
     name: Optional[StrictStr] = None
-    log_name: Optional[StrictStr] = Field(default=None, alias="logName")
+    log_name: Optional[StrictStr] = Field(default=None, description="The log_name should be the name of the input/output log pair or the name of the input log. Logs get attached to the LLM log input/output pair, which are identified by the input log name.", alias="logName")
     key: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
     org_id: Optional[StrictStr] = Field(default=None, alias="orgId")

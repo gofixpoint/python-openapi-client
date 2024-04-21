@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 *FixpointApi* | [**fixpoint_list_datasets**](docs/FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
 *FixpointApi* | [**fixpoint_list_likes**](docs/FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
 *FixpointApi* | [**fixpoint_list_log_attributes**](docs/FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
-*FixpointApi* | [**fixpoint_list_open_ai_chat_logs**](docs/FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | List LLM logs
+*FixpointApi* | [**fixpoint_list_open_ai_chat_logs**](docs/FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | DEPRECATED: List LLM logs
 *FixpointApi* | [**fixpoint_list_routing_configs**](docs/FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
 *FixpointApi* | [**fixpoint_post_dataset_logs**](docs/FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
 *FixpointApi* | [**fixpoint_update_spending_totals**](docs/FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
  - [V1ThumbsReaction](docs/V1ThumbsReaction.md)
  - [V1ToolCall](docs/V1ToolCall.md)
  - [V1Tracing](docs/V1Tracing.md)
+ - [V1TracingFilters](docs/V1TracingFilters.md)
  - [V1UsageTotals](docs/V1UsageTotals.md)
 
 

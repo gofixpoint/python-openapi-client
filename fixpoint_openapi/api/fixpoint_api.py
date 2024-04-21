@@ -4134,6 +4134,10 @@ class FixpointApi:
         filters_attribute_filters_keys: Optional[List[StrictStr]] = None,
         filters_attribute_filters_values: Optional[List[StrictStr]] = None,
         filters_dataset_filters_dataset_names: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_session_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_trace_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_span_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_parent_span_ids: Optional[List[StrictStr]] = None,
         mode: Optional[StrictStr] = None,
         count_entries: Annotated[Optional[StrictBool], Field(description="Whether to also return a count of all the entries matching the list query.")] = None,
         _request_timeout: Union[
@@ -4149,7 +4153,7 @@ class FixpointApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> V1ListOpenAIChatLogsResponse:
-        """List LLM logs
+        """DEPRECATED: List LLM logs
 
 
         :param parent: The parent resource collection. In this case, \"/openai_chats/{model_name}\". (required)
@@ -4168,6 +4172,14 @@ class FixpointApi:
         :type filters_attribute_filters_values: List[str]
         :param filters_dataset_filters_dataset_names:
         :type filters_dataset_filters_dataset_names: List[str]
+        :param filters_tracing_filters_session_ids:
+        :type filters_tracing_filters_session_ids: List[str]
+        :param filters_tracing_filters_trace_ids:
+        :type filters_tracing_filters_trace_ids: List[str]
+        :param filters_tracing_filters_span_ids:
+        :type filters_tracing_filters_span_ids: List[str]
+        :param filters_tracing_filters_parent_span_ids:
+        :type filters_tracing_filters_parent_span_ids: List[str]
         :param mode:
         :type mode: str
         :param count_entries: Whether to also return a count of all the entries matching the list query.
@@ -4203,6 +4215,10 @@ class FixpointApi:
             filters_attribute_filters_keys=filters_attribute_filters_keys,
             filters_attribute_filters_values=filters_attribute_filters_values,
             filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names,
+            filters_tracing_filters_session_ids=filters_tracing_filters_session_ids,
+            filters_tracing_filters_trace_ids=filters_tracing_filters_trace_ids,
+            filters_tracing_filters_span_ids=filters_tracing_filters_span_ids,
+            filters_tracing_filters_parent_span_ids=filters_tracing_filters_parent_span_ids,
             mode=mode,
             count_entries=count_entries,
             _request_auth=_request_auth,
@@ -4236,6 +4252,10 @@ class FixpointApi:
         filters_attribute_filters_keys: Optional[List[StrictStr]] = None,
         filters_attribute_filters_values: Optional[List[StrictStr]] = None,
         filters_dataset_filters_dataset_names: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_session_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_trace_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_span_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_parent_span_ids: Optional[List[StrictStr]] = None,
         mode: Optional[StrictStr] = None,
         count_entries: Annotated[Optional[StrictBool], Field(description="Whether to also return a count of all the entries matching the list query.")] = None,
         _request_timeout: Union[
@@ -4251,7 +4271,7 @@ class FixpointApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[V1ListOpenAIChatLogsResponse]:
-        """List LLM logs
+        """DEPRECATED: List LLM logs
 
 
         :param parent: The parent resource collection. In this case, \"/openai_chats/{model_name}\". (required)
@@ -4270,6 +4290,14 @@ class FixpointApi:
         :type filters_attribute_filters_values: List[str]
         :param filters_dataset_filters_dataset_names:
         :type filters_dataset_filters_dataset_names: List[str]
+        :param filters_tracing_filters_session_ids:
+        :type filters_tracing_filters_session_ids: List[str]
+        :param filters_tracing_filters_trace_ids:
+        :type filters_tracing_filters_trace_ids: List[str]
+        :param filters_tracing_filters_span_ids:
+        :type filters_tracing_filters_span_ids: List[str]
+        :param filters_tracing_filters_parent_span_ids:
+        :type filters_tracing_filters_parent_span_ids: List[str]
         :param mode:
         :type mode: str
         :param count_entries: Whether to also return a count of all the entries matching the list query.
@@ -4305,6 +4333,10 @@ class FixpointApi:
             filters_attribute_filters_keys=filters_attribute_filters_keys,
             filters_attribute_filters_values=filters_attribute_filters_values,
             filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names,
+            filters_tracing_filters_session_ids=filters_tracing_filters_session_ids,
+            filters_tracing_filters_trace_ids=filters_tracing_filters_trace_ids,
+            filters_tracing_filters_span_ids=filters_tracing_filters_span_ids,
+            filters_tracing_filters_parent_span_ids=filters_tracing_filters_parent_span_ids,
             mode=mode,
             count_entries=count_entries,
             _request_auth=_request_auth,
@@ -4338,6 +4370,10 @@ class FixpointApi:
         filters_attribute_filters_keys: Optional[List[StrictStr]] = None,
         filters_attribute_filters_values: Optional[List[StrictStr]] = None,
         filters_dataset_filters_dataset_names: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_session_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_trace_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_span_ids: Optional[List[StrictStr]] = None,
+        filters_tracing_filters_parent_span_ids: Optional[List[StrictStr]] = None,
         mode: Optional[StrictStr] = None,
         count_entries: Annotated[Optional[StrictBool], Field(description="Whether to also return a count of all the entries matching the list query.")] = None,
         _request_timeout: Union[
@@ -4353,7 +4389,7 @@ class FixpointApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List LLM logs
+        """DEPRECATED: List LLM logs
 
 
         :param parent: The parent resource collection. In this case, \"/openai_chats/{model_name}\". (required)
@@ -4372,6 +4408,14 @@ class FixpointApi:
         :type filters_attribute_filters_values: List[str]
         :param filters_dataset_filters_dataset_names:
         :type filters_dataset_filters_dataset_names: List[str]
+        :param filters_tracing_filters_session_ids:
+        :type filters_tracing_filters_session_ids: List[str]
+        :param filters_tracing_filters_trace_ids:
+        :type filters_tracing_filters_trace_ids: List[str]
+        :param filters_tracing_filters_span_ids:
+        :type filters_tracing_filters_span_ids: List[str]
+        :param filters_tracing_filters_parent_span_ids:
+        :type filters_tracing_filters_parent_span_ids: List[str]
         :param mode:
         :type mode: str
         :param count_entries: Whether to also return a count of all the entries matching the list query.
@@ -4407,6 +4451,10 @@ class FixpointApi:
             filters_attribute_filters_keys=filters_attribute_filters_keys,
             filters_attribute_filters_values=filters_attribute_filters_values,
             filters_dataset_filters_dataset_names=filters_dataset_filters_dataset_names,
+            filters_tracing_filters_session_ids=filters_tracing_filters_session_ids,
+            filters_tracing_filters_trace_ids=filters_tracing_filters_trace_ids,
+            filters_tracing_filters_span_ids=filters_tracing_filters_span_ids,
+            filters_tracing_filters_parent_span_ids=filters_tracing_filters_parent_span_ids,
             mode=mode,
             count_entries=count_entries,
             _request_auth=_request_auth,
@@ -4435,6 +4483,10 @@ class FixpointApi:
         filters_attribute_filters_keys,
         filters_attribute_filters_values,
         filters_dataset_filters_dataset_names,
+        filters_tracing_filters_session_ids,
+        filters_tracing_filters_trace_ids,
+        filters_tracing_filters_span_ids,
+        filters_tracing_filters_parent_span_ids,
         mode,
         count_entries,
         _request_auth,
@@ -4449,6 +4501,10 @@ class FixpointApi:
             'filters.attributeFilters.keys': 'multi',
             'filters.attributeFilters.values': 'multi',
             'filters.datasetFilters.datasetNames': 'multi',
+            'filters.tracingFilters.sessionIds': 'multi',
+            'filters.tracingFilters.traceIds': 'multi',
+            'filters.tracingFilters.spanIds': 'multi',
+            'filters.tracingFilters.parentSpanIds': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -4489,6 +4545,22 @@ class FixpointApi:
         if filters_dataset_filters_dataset_names is not None:
             
             _query_params.append(('filters.datasetFilters.datasetNames', filters_dataset_filters_dataset_names))
+            
+        if filters_tracing_filters_session_ids is not None:
+            
+            _query_params.append(('filters.tracingFilters.sessionIds', filters_tracing_filters_session_ids))
+            
+        if filters_tracing_filters_trace_ids is not None:
+            
+            _query_params.append(('filters.tracingFilters.traceIds', filters_tracing_filters_trace_ids))
+            
+        if filters_tracing_filters_span_ids is not None:
+            
+            _query_params.append(('filters.tracingFilters.spanIds', filters_tracing_filters_span_ids))
+            
+        if filters_tracing_filters_parent_span_ids is not None:
+            
+            _query_params.append(('filters.tracingFilters.parentSpanIds', filters_tracing_filters_parent_span_ids))
             
         if mode is not None:
             

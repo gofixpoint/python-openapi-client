@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **user_id** | **str** |  | [optional] 
 **messages** | [**List[V1InputMessage]**](V1InputMessage.md) |  | [optional] 
 **mode** | [**V1Mode**](V1Mode.md) |  | [optional] 
+**log_attributes** | [**List[V1LogAttribute]**](V1LogAttribute.md) | Optional attributes to attach to LLM logs created. | [optional] 
 
 ## Example
 

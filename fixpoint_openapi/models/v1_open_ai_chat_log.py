@@ -22,6 +22,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from fixpoint_openapi.models.v1_open_ai_chat_input_log import V1OpenAIChatInputLog
 from fixpoint_openapi.models.v1_open_ai_chat_output_log import V1OpenAIChatOutputLog
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -33,11 +34,11 @@ class V1OpenAIChatLog(BaseModel):
     model_name: Optional[StrictStr] = Field(default=None, description="The model name that produced the log.", alias="modelName")
     app_name: Optional[StrictStr] = Field(default=None, alias="appName")
     data_source_name: Optional[StrictStr] = Field(default=None, alias="dataSourceName")
-    session_name: Optional[StrictStr] = Field(default=None, alias="sessionName")
+    tracing: Optional[V1Tracing] = None
     input_log: Optional[V1OpenAIChatInputLog] = Field(default=None, alias="inputLog")
     output_log: Optional[V1OpenAIChatOutputLog] = Field(default=None, alias="outputLog")
     created_at: Optional[datetime] = Field(default=None, description="The created_at timestamp is the same as the input_log.created_at timestamp.", alias="createdAt")
-    __properties: ClassVar[List[str]] = ["name", "modelName", "appName", "dataSourceName", "sessionName", "inputLog", "outputLog", "createdAt"]
+    __properties: ClassVar[List[str]] = ["name", "modelName", "appName", "dataSourceName", "tracing", "inputLog", "outputLog", "createdAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +79,9 @@ class V1OpenAIChatLog(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
         # override the default output from pydantic by calling `to_dict()` of input_log
         if self.input_log:
             _dict['inputLog'] = self.input_log.to_dict()
@@ -100,7 +104,7 @@ class V1OpenAIChatLog(BaseModel):
             "modelName": obj.get("modelName"),
             "appName": obj.get("appName"),
             "dataSourceName": obj.get("dataSourceName"),
-            "sessionName": obj.get("sessionName"),
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
             "inputLog": V1OpenAIChatInputLog.from_dict(obj["inputLog"]) if obj.get("inputLog") is not None else None,
             "outputLog": V1OpenAIChatOutputLog.from_dict(obj["outputLog"]) if obj.get("outputLog") is not None else None,
             "createdAt": obj.get("createdAt")

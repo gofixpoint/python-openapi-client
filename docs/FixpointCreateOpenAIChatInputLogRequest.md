@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**session_name** | **str** |  | [optional] 
 **messages** | [**List[V1InputMessage]**](V1InputMessage.md) |  | [optional] 
 **temperature** | **float** |  | [optional] 
-**trace_id** | **str** |  | [optional] 
 **user_id** | **str** |  | [optional] 
+**tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 **mode** | [**V1Mode**](V1Mode.md) |  | [optional] 
+**log_attributes** | [**List[V1LogAttribute]**](V1LogAttribute.md) | Optional attributes to attach to LLM input log when creating it. | [optional] 
 
 ## Example
 

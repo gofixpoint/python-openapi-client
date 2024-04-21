@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from fixpoint_openapi.models.v1_mode import V1Mode
 from fixpoint_openapi.models.v1_open_ai_chat_output_log_choice import V1OpenAIChatOutputLogChoice
 from fixpoint_openapi.models.v1_open_ai_chat_output_log_usage import V1OpenAIChatOutputLogUsage
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,12 +32,11 @@ class FixpointCreateOpenAIChatOutputLogRequest(BaseModel):
     """ # noqa: E501
     input_name: Optional[StrictStr] = Field(default=None, alias="inputName")
     openai_id: Optional[StrictStr] = Field(default=None, alias="openaiId")
-    session_name: Optional[StrictStr] = Field(default=None, alias="sessionName")
-    trace_id: Optional[StrictStr] = Field(default=None, alias="traceId")
+    tracing: Optional[V1Tracing] = None
     mode: Optional[V1Mode] = None
     choices: Optional[List[V1OpenAIChatOutputLogChoice]] = None
     usage: Optional[V1OpenAIChatOutputLogUsage] = None
-    __properties: ClassVar[List[str]] = ["inputName", "openaiId", "sessionName", "traceId", "mode", "choices", "usage"]
+    __properties: ClassVar[List[str]] = ["inputName", "openaiId", "tracing", "mode", "choices", "usage"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +77,9 @@ class FixpointCreateOpenAIChatOutputLogRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in choices (list)
         _items = []
         if self.choices:
@@ -101,8 +104,7 @@ class FixpointCreateOpenAIChatOutputLogRequest(BaseModel):
         _obj = cls.model_validate({
             "inputName": obj.get("inputName"),
             "openaiId": obj.get("openaiId"),
-            "sessionName": obj.get("sessionName"),
-            "traceId": obj.get("traceId"),
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
             "mode": obj.get("mode"),
             "choices": [V1OpenAIChatOutputLogChoice.from_dict(_item) for _item in obj["choices"]] if obj.get("choices") is not None else None,
             "usage": V1OpenAIChatOutputLogUsage.from_dict(obj["usage"]) if obj.get("usage") is not None else None

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**log_name** | **str** |  | [optional] 
+**log_name** | **str** | The log_name should be the name of the input/output log pair or the name of the input log. Logs get attached to the LLM log input/output pair, which are identified by the input log name. | [optional] 
 **key** | **str** |  | [optional] 
 **value** | **str** |  | [optional] 
 **org_id** | **str** |  | [optional] 

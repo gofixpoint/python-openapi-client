@@ -23,6 +23,7 @@ from fixpoint_openapi.models.v1_attribute_filters import V1AttributeFilters
 from fixpoint_openapi.models.v1_dataset_filters import V1DatasetFilters
 from fixpoint_openapi.models.v1_like_filter import V1LikeFilter
 from fixpoint_openapi.models.v1_relative_date_time_filters import V1RelativeDateTimeFilters
+from fixpoint_openapi.models.v1_tracing_filters import V1TracingFilters
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,7 +35,8 @@ class V1OpenAIChatLogsFilters(BaseModel):
     userfeedback_filter: Optional[V1LikeFilter] = Field(default=None, alias="userfeedbackFilter")
     attribute_filters: Optional[V1AttributeFilters] = Field(default=None, alias="attributeFilters")
     dataset_filters: Optional[V1DatasetFilters] = Field(default=None, alias="datasetFilters")
-    __properties: ClassVar[List[str]] = ["relativeDatetimeFilters", "userfeedbackFilter", "attributeFilters", "datasetFilters"]
+    tracing_filters: Optional[V1TracingFilters] = Field(default=None, alias="tracingFilters")
+    __properties: ClassVar[List[str]] = ["relativeDatetimeFilters", "userfeedbackFilter", "attributeFilters", "datasetFilters", "tracingFilters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +89,9 @@ class V1OpenAIChatLogsFilters(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of dataset_filters
         if self.dataset_filters:
             _dict['datasetFilters'] = self.dataset_filters.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tracing_filters
+        if self.tracing_filters:
+            _dict['tracingFilters'] = self.tracing_filters.to_dict()
         return _dict
 
     @classmethod
@@ -102,7 +107,8 @@ class V1OpenAIChatLogsFilters(BaseModel):
             "relativeDatetimeFilters": V1RelativeDateTimeFilters.from_dict(obj["relativeDatetimeFilters"]) if obj.get("relativeDatetimeFilters") is not None else None,
             "userfeedbackFilter": V1LikeFilter.from_dict(obj["userfeedbackFilter"]) if obj.get("userfeedbackFilter") is not None else None,
             "attributeFilters": V1AttributeFilters.from_dict(obj["attributeFilters"]) if obj.get("attributeFilters") is not None else None,
-            "datasetFilters": V1DatasetFilters.from_dict(obj["datasetFilters"]) if obj.get("datasetFilters") is not None else None
+            "datasetFilters": V1DatasetFilters.from_dict(obj["datasetFilters"]) if obj.get("datasetFilters") is not None else None,
+            "tracingFilters": V1TracingFilters.from_dict(obj["tracingFilters"]) if obj.get("tracingFilters") is not None else None
         })
         return _obj
 

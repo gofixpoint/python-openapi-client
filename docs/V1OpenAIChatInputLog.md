@@ -7,11 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
 **model_name** | **str** |  | [optional] 
-**session_name** | **str** |  | [optional] 
 **messages** | [**List[V1InputMessage]**](V1InputMessage.md) |  | [optional] 
 **temperature** | **float** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
-**trace_id** | **str** |  | [optional] 
+**tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 
 ## Example
 
