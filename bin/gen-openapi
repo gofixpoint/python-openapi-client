@@ -7,6 +7,14 @@ ROOT_DIR=$(realpath "${SCRIPT_DIR}/..")
 
 cd $ROOT_DIR
 
+UNCHECKED_FILES=$(git status --porcelain)
+
+if [ -n "$UNCHECKED_FILES" ];
+then
+    echo "You have unchecked source files."
+    exit 1
+fi
+
 additional_properties=()
 additional_properties+=("appDescription='OpenAPI client for Fixpoint - Auto-improvement to make your LLM apps smarter'")
 additional_properties+=("projectKeywords='OpenAPI'")
@@ -26,3 +34,11 @@ openapi-generator generate \
     -o . \
     --package-name fixpoint_openapi \
     --additional-properties "$(IFS=','; echo "${additional_properties[*]}")"
+
+echo ""
+echo ""
+echo ""
+
+echo "Staging the generated code."
+git add docs test fixpoint_openapi .openapi-generator README.md
+git restore .github/workflows/python.yml pyproject.toml setup.py
