@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from fixpoint_openapi.models.v1_input_message import V1InputMessage
 from fixpoint_openapi.models.v1_log_attribute import V1LogAttribute
@@ -27,18 +27,18 @@ from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1CreateMultiLLMChatCompletionRequest(BaseModel):
+class V1CreateABChatCompletionRequest(BaseModel):
     """
-    V1CreateMultiLLMChatCompletionRequest
+    V1CreateABChatCompletionRequest
     """ # noqa: E501
     models: Optional[List[V1Model]] = Field(default=None, description="The models we will route all inference requests to. We return the inference response from the first model in the list to the client.")
-    tracing: Optional[V1Tracing] = None
+    experiment_id: Optional[StrictStr] = Field(default=None, alias="experimentId")
     user_id: Optional[StrictStr] = Field(default=None, alias="userId")
+    tracing: Optional[V1Tracing] = None
     messages: Optional[List[V1InputMessage]] = None
-    display_model: Optional[StrictInt] = Field(default=None, description="zero-indexed model completion to return.  By default, we return the completion from the first model in the models list. If you want to return a different model's completion for A/B testing, you can specify the model completion to return.", alias="displayModel")
     mode: Optional[V1Mode] = None
     log_attributes: Optional[List[V1LogAttribute]] = Field(default=None, description="Optional attributes to attach to LLM logs created.", alias="logAttributes")
-    __properties: ClassVar[List[str]] = ["models", "tracing", "userId", "messages", "displayModel", "mode", "logAttributes"]
+    __properties: ClassVar[List[str]] = ["models", "experimentId", "userId", "tracing", "messages", "mode", "logAttributes"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -58,7 +58,7 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1CreateMultiLLMChatCompletionRequest from a JSON string"""
+        """Create an instance of V1CreateABChatCompletionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -107,7 +107,7 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1CreateMultiLLMChatCompletionRequest from a dict"""
+        """Create an instance of V1CreateABChatCompletionRequest from a dict"""
         if obj is None:
             return None
 
@@ -116,10 +116,10 @@ class V1CreateMultiLLMChatCompletionRequest(BaseModel):
 
         _obj = cls.model_validate({
             "models": [V1Model.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None,
-            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
+            "experimentId": obj.get("experimentId"),
             "userId": obj.get("userId"),
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
             "messages": [V1InputMessage.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "displayModel": obj.get("displayModel"),
             "mode": obj.get("mode"),
             "logAttributes": [V1LogAttribute.from_dict(_item) for _item in obj["logAttributes"]] if obj.get("logAttributes") is not None else None
         })

@@ -19,23 +19,24 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_fallback_strategy import V1FallbackStrategy
-from fixpoint_openapi.models.v1_routing_block import V1RoutingBlock
-from fixpoint_openapi.models.v1_spend_cap_model import V1SpendCapModel
-from fixpoint_openapi.models.v1_terminal_state import V1TerminalState
+from fixpoint_openapi.models.v1_chat_completion import V1ChatCompletion
+from fixpoint_openapi.models.v1_mode import V1Mode
+from fixpoint_openapi.models.v1_model import V1Model
+from fixpoint_openapi.models.v1_tracing import V1Tracing
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1CreateRoutingConfigRequest(BaseModel):
+class V1AbChatCompletion(BaseModel):
     """
-    V1CreateRoutingConfigRequest
+    V1AbChatCompletion
     """ # noqa: E501
-    description: Optional[StrictStr] = None
-    blocks: Optional[List[V1RoutingBlock]] = None
-    models: Optional[List[V1SpendCapModel]] = None
-    fallback_strategy: Optional[V1FallbackStrategy] = Field(default=None, alias="fallbackStrategy")
-    terminal_state: Optional[V1TerminalState] = Field(default=None, alias="terminalState")
-    __properties: ClassVar[List[str]] = ["description", "blocks", "models", "fallbackStrategy", "terminalState"]
+    id: StrictStr = Field(description="This is the ID of the multi-LLM chat completion.")
+    primary_external_id: Optional[StrictStr] = Field(default=None, description="The external ID of the chat completion.", alias="primaryExternalId")
+    model: V1Model
+    tracing: Optional[V1Tracing] = None
+    completion: V1ChatCompletion
+    mode: V1Mode
+    __properties: ClassVar[List[str]] = ["id", "primaryExternalId", "model", "tracing", "completion", "mode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +56,7 @@ class V1CreateRoutingConfigRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1CreateRoutingConfigRequest from a JSON string"""
+        """Create an instance of V1AbChatCompletion from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -67,8 +68,10 @@ class V1CreateRoutingConfigRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "id",
         ])
 
         _dict = self.model_dump(
@@ -76,25 +79,20 @@ class V1CreateRoutingConfigRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in blocks (list)
-        _items = []
-        if self.blocks:
-            for _item in self.blocks:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['blocks'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in models (list)
-        _items = []
-        if self.models:
-            for _item in self.models:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['models'] = _items
+        # override the default output from pydantic by calling `to_dict()` of model
+        if self.model:
+            _dict['model'] = self.model.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tracing
+        if self.tracing:
+            _dict['tracing'] = self.tracing.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of completion
+        if self.completion:
+            _dict['completion'] = self.completion.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1CreateRoutingConfigRequest from a dict"""
+        """Create an instance of V1AbChatCompletion from a dict"""
         if obj is None:
             return None
 
@@ -102,11 +100,12 @@ class V1CreateRoutingConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "blocks": [V1RoutingBlock.from_dict(_item) for _item in obj["blocks"]] if obj.get("blocks") is not None else None,
-            "models": [V1SpendCapModel.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None,
-            "fallbackStrategy": obj.get("fallbackStrategy"),
-            "terminalState": obj.get("terminalState")
+            "id": obj.get("id"),
+            "primaryExternalId": obj.get("primaryExternalId"),
+            "model": V1Model.from_dict(obj["model"]) if obj.get("model") is not None else None,
+            "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
+            "completion": V1ChatCompletion.from_dict(obj["completion"]) if obj.get("completion") is not None else None,
+            "mode": obj.get("mode")
         })
         return _obj
 

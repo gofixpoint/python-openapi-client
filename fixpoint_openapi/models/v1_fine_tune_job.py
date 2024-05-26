@@ -20,26 +20,29 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_fallback_strategy import V1FallbackStrategy
-from fixpoint_openapi.models.v1_routing_block import V1RoutingBlock
-from fixpoint_openapi.models.v1_spend_cap_model import V1SpendCapModel
-from fixpoint_openapi.models.v1_terminal_state import V1TerminalState
+from fixpoint_openapi.models.v1_fine_tune_status import V1FineTuneStatus
+from fixpoint_openapi.models.v1_hyperparameters import V1Hyperparameters
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1RoutingConfig(BaseModel):
+class V1FineTuneJob(BaseModel):
     """
-    V1RoutingConfig
+    V1FineTuneJob
     """ # noqa: E501
     id: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    blocks: Optional[List[V1RoutingBlock]] = None
+    set_id: Optional[StrictStr] = Field(default=None, alias="setId")
+    dataset_id: Optional[StrictStr] = Field(default=None, alias="datasetId")
+    model_name: Optional[StrictStr] = Field(default=None, alias="modelName")
+    status: Optional[V1FineTuneStatus] = None
+    hyperparameters: Optional[V1Hyperparameters] = None
     created_at: Optional[datetime] = Field(default=None, alias="createdAt")
     updated_at: Optional[datetime] = Field(default=None, alias="updatedAt")
-    fallback_strategy: Optional[V1FallbackStrategy] = Field(default=None, alias="fallbackStrategy")
-    terminal_state: Optional[V1TerminalState] = Field(default=None, alias="terminalState")
-    models: Optional[List[V1SpendCapModel]] = None
-    __properties: ClassVar[List[str]] = ["id", "description", "blocks", "createdAt", "updatedAt", "fallbackStrategy", "terminalState", "models"]
+    secret_alias: Optional[StrictStr] = Field(default=None, alias="secretAlias")
+    fine_tuned_model: Optional[StrictStr] = Field(default=None, alias="fineTunedModel")
+    provider_job_id: Optional[StrictStr] = Field(default=None, alias="providerJobId")
+    started_at: Optional[datetime] = Field(default=None, alias="startedAt")
+    ended_at: Optional[datetime] = Field(default=None, alias="endedAt")
+    __properties: ClassVar[List[str]] = ["id", "setId", "datasetId", "modelName", "status", "hyperparameters", "createdAt", "updatedAt", "secretAlias", "fineTunedModel", "providerJobId", "startedAt", "endedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +62,7 @@ class V1RoutingConfig(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1RoutingConfig from a JSON string"""
+        """Create an instance of V1FineTuneJob from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,25 +83,14 @@ class V1RoutingConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in blocks (list)
-        _items = []
-        if self.blocks:
-            for _item in self.blocks:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['blocks'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in models (list)
-        _items = []
-        if self.models:
-            for _item in self.models:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['models'] = _items
+        # override the default output from pydantic by calling `to_dict()` of hyperparameters
+        if self.hyperparameters:
+            _dict['hyperparameters'] = self.hyperparameters.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1RoutingConfig from a dict"""
+        """Create an instance of V1FineTuneJob from a dict"""
         if obj is None:
             return None
 
@@ -107,13 +99,18 @@ class V1RoutingConfig(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "description": obj.get("description"),
-            "blocks": [V1RoutingBlock.from_dict(_item) for _item in obj["blocks"]] if obj.get("blocks") is not None else None,
+            "setId": obj.get("setId"),
+            "datasetId": obj.get("datasetId"),
+            "modelName": obj.get("modelName"),
+            "status": obj.get("status"),
+            "hyperparameters": V1Hyperparameters.from_dict(obj["hyperparameters"]) if obj.get("hyperparameters") is not None else None,
             "createdAt": obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt"),
-            "fallbackStrategy": obj.get("fallbackStrategy"),
-            "terminalState": obj.get("terminalState"),
-            "models": [V1SpendCapModel.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None
+            "secretAlias": obj.get("secretAlias"),
+            "fineTunedModel": obj.get("fineTunedModel"),
+            "providerJobId": obj.get("providerJobId"),
+            "startedAt": obj.get("startedAt"),
+            "endedAt": obj.get("endedAt")
         })
         return _obj
 

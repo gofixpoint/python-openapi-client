@@ -5,10 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**models** | [**List[V1CreateMultiLLMChatCompletionRequestModel]**](V1CreateMultiLLMChatCompletionRequestModel.md) | The models we will route all inference requests to. We return the inference response from the first model in the list to the client. | [optional] 
+**models** | [**List[V1Model]**](V1Model.md) | The models we will route all inference requests to. We return the inference response from the first model in the list to the client. | [optional] 
 **tracing** | [**V1Tracing**](V1Tracing.md) |  | [optional] 
 **user_id** | **str** |  | [optional] 
 **messages** | [**List[V1InputMessage]**](V1InputMessage.md) |  | [optional] 
+**display_model** | **int** | zero-indexed model completion to return.  By default, we return the completion from the first model in the models list. If you want to return a different model&#39;s completion for A/B testing, you can specify the model completion to return. | [optional] 
 **mode** | [**V1Mode**](V1Mode.md) |  | [optional] 
 **log_attributes** | [**List[V1LogAttribute]**](V1LogAttribute.md) | Optional attributes to attach to LLM logs created. | [optional] 
 

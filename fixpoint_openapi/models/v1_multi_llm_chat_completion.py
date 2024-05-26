@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from fixpoint_openapi.models.v1_chat_completion import V1ChatCompletion
 from fixpoint_openapi.models.v1_mode import V1Mode
@@ -32,10 +32,11 @@ class V1MultiLLMChatCompletion(BaseModel):
     id: StrictStr = Field(description="This is the ID of the multi-LLM chat completion. It is also the LLM log ID/name of the input/output log for the primary LLM (aka the completion we return to the client).  If we failed to log the request but succeeded in making the chat completion, we will still return a success, but the \"id\" will be empty. In that case, you can use the primary_external_id to find the logged completions.")
     primary_external_id: Optional[StrictStr] = Field(default=None, description="The external ID of the first model in the multi-LLM inference request. This is the primary model, whose response we return to the client. We can only return the first model ID because other model inference occurs asynchronously.", alias="primaryExternalId")
     model_names: List[StrictStr] = Field(alias="modelNames")
+    display_model: Optional[StrictInt] = Field(default=None, description="The index of the model displayed.", alias="displayModel")
     tracing: Optional[V1Tracing] = None
     completion: V1ChatCompletion
     mode: V1Mode
-    __properties: ClassVar[List[str]] = ["id", "primaryExternalId", "modelNames", "tracing", "completion", "mode"]
+    __properties: ClassVar[List[str]] = ["id", "primaryExternalId", "modelNames", "displayModel", "tracing", "completion", "mode"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,6 +100,7 @@ class V1MultiLLMChatCompletion(BaseModel):
             "id": obj.get("id"),
             "primaryExternalId": obj.get("primaryExternalId"),
             "modelNames": obj.get("modelNames"),
+            "displayModel": obj.get("displayModel"),
             "tracing": V1Tracing.from_dict(obj["tracing"]) if obj.get("tracing") is not None else None,
             "completion": V1ChatCompletion.from_dict(obj["completion"]) if obj.get("completion") is not None else None,
             "mode": obj.get("mode")

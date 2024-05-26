@@ -19,11 +19,16 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
+from fixpoint_openapi.models.fixpoint_batch_delete_dataset_logs_request import FixpointBatchDeleteDatasetLogsRequest
 from fixpoint_openapi.models.fixpoint_create_open_ai_chat_input_log_request import FixpointCreateOpenAIChatInputLogRequest
 from fixpoint_openapi.models.fixpoint_create_open_ai_chat_output_log_request import FixpointCreateOpenAIChatOutputLogRequest
 from fixpoint_openapi.models.fixpoint_post_dataset_logs_request import FixpointPostDatasetLogsRequest
 from fixpoint_openapi.models.fixpoint_update_spending_totals_request import FixpointUpdateSpendingTotalsRequest
+from fixpoint_openapi.models.v1_ab_chat_completion import V1AbChatCompletion
 from fixpoint_openapi.models.v1_api_secret import V1ApiSecret
+from fixpoint_openapi.models.v1_batch_create_fine_tune_jobs_request import V1BatchCreateFineTuneJobsRequest
+from fixpoint_openapi.models.v1_batch_create_fine_tune_jobs_response import V1BatchCreateFineTuneJobsResponse
+from fixpoint_openapi.models.v1_create_ab_chat_completion_request import V1CreateABChatCompletionRequest
 from fixpoint_openapi.models.v1_create_api_secret_request import V1CreateApiSecretRequest
 from fixpoint_openapi.models.v1_create_app_logs_request import V1CreateAppLogsRequest
 from fixpoint_openapi.models.v1_create_app_logs_response import V1CreateAppLogsResponse
@@ -35,10 +40,13 @@ from fixpoint_openapi.models.v1_create_log_attribute_request import V1CreateLogA
 from fixpoint_openapi.models.v1_create_log_attribute_response import V1CreateLogAttributeResponse
 from fixpoint_openapi.models.v1_create_multi_llm_chat_completion_request import V1CreateMultiLLMChatCompletionRequest
 from fixpoint_openapi.models.v1_create_routing_config_request import V1CreateRoutingConfigRequest
+from fixpoint_openapi.models.v1_delete_dataset_logs_response import V1DeleteDatasetLogsResponse
+from fixpoint_openapi.models.v1_delete_dataset_response import V1DeleteDatasetResponse
 from fixpoint_openapi.models.v1_delete_log_attribute_response import V1DeleteLogAttributeResponse
 from fixpoint_openapi.models.v1_list_api_secrets_response import V1ListApiSecretsResponse
 from fixpoint_openapi.models.v1_list_app_logs_response import V1ListAppLogsResponse
 from fixpoint_openapi.models.v1_list_datasets_response import V1ListDatasetsResponse
+from fixpoint_openapi.models.v1_list_fine_tune_jobs_response import V1ListFineTuneJobsResponse
 from fixpoint_openapi.models.v1_list_likes_response import V1ListLikesResponse
 from fixpoint_openapi.models.v1_list_log_attributes_response import V1ListLogAttributesResponse
 from fixpoint_openapi.models.v1_list_open_ai_chat_logs_response import V1ListOpenAIChatLogsResponse
@@ -65,6 +73,825 @@ class FixpointApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+
+    @validate_call
+    def fixpoint_batch_create_fine_tune_jobs(
+        self,
+        body: V1BatchCreateFineTuneJobsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1BatchCreateFineTuneJobsResponse:
+        """fixpoint_batch_create_fine_tune_jobs
+
+
+        :param body: (required)
+        :type body: V1BatchCreateFineTuneJobsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_create_fine_tune_jobs_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1BatchCreateFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def fixpoint_batch_create_fine_tune_jobs_with_http_info(
+        self,
+        body: V1BatchCreateFineTuneJobsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1BatchCreateFineTuneJobsResponse]:
+        """fixpoint_batch_create_fine_tune_jobs
+
+
+        :param body: (required)
+        :type body: V1BatchCreateFineTuneJobsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_create_fine_tune_jobs_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1BatchCreateFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def fixpoint_batch_create_fine_tune_jobs_without_preload_content(
+        self,
+        body: V1BatchCreateFineTuneJobsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """fixpoint_batch_create_fine_tune_jobs
+
+
+        :param body: (required)
+        :type body: V1BatchCreateFineTuneJobsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_create_fine_tune_jobs_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1BatchCreateFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _fixpoint_batch_create_fine_tune_jobs_serialize(
+        self,
+        body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if body is not None:
+            _body_params = body
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/fine_tune_jobs:batchCreate',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def fixpoint_batch_delete_dataset_logs(
+        self,
+        dataset_id: StrictStr,
+        body: FixpointBatchDeleteDatasetLogsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1DeleteDatasetLogsResponse:
+        """fixpoint_batch_delete_dataset_logs
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param body: (required)
+        :type body: FixpointBatchDeleteDatasetLogsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_delete_dataset_logs_serialize(
+            dataset_id=dataset_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetLogsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def fixpoint_batch_delete_dataset_logs_with_http_info(
+        self,
+        dataset_id: StrictStr,
+        body: FixpointBatchDeleteDatasetLogsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1DeleteDatasetLogsResponse]:
+        """fixpoint_batch_delete_dataset_logs
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param body: (required)
+        :type body: FixpointBatchDeleteDatasetLogsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_delete_dataset_logs_serialize(
+            dataset_id=dataset_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetLogsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def fixpoint_batch_delete_dataset_logs_without_preload_content(
+        self,
+        dataset_id: StrictStr,
+        body: FixpointBatchDeleteDatasetLogsRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """fixpoint_batch_delete_dataset_logs
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param body: (required)
+        :type body: FixpointBatchDeleteDatasetLogsRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_batch_delete_dataset_logs_serialize(
+            dataset_id=dataset_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetLogsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _fixpoint_batch_delete_dataset_logs_serialize(
+        self,
+        dataset_id,
+        body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if dataset_id is not None:
+            _path_params['datasetId'] = dataset_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if body is not None:
+            _body_params = body
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/datasets/{datasetId}/logs:deleteLogs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def fixpoint_create_ab_chat_completion(
+        self,
+        body: V1CreateABChatCompletionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1AbChatCompletion:
+        """Create A/B routed chat completion
+
+        Create a chat completion that is routed to one of the A/B experiment arms.
+
+        :param body: (required)
+        :type body: V1CreateABChatCompletionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_create_ab_chat_completion_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1AbChatCompletion",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def fixpoint_create_ab_chat_completion_with_http_info(
+        self,
+        body: V1CreateABChatCompletionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1AbChatCompletion]:
+        """Create A/B routed chat completion
+
+        Create a chat completion that is routed to one of the A/B experiment arms.
+
+        :param body: (required)
+        :type body: V1CreateABChatCompletionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_create_ab_chat_completion_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1AbChatCompletion",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def fixpoint_create_ab_chat_completion_without_preload_content(
+        self,
+        body: V1CreateABChatCompletionRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create A/B routed chat completion
+
+        Create a chat completion that is routed to one of the A/B experiment arms.
+
+        :param body: (required)
+        :type body: V1CreateABChatCompletionRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_create_ab_chat_completion_serialize(
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1AbChatCompletion",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _fixpoint_create_ab_chat_completion_serialize(
+        self,
+        body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if body is not None:
+            _body_params = body
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/chat/completions/ab',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
 
 
     @validate_call
@@ -2519,6 +3346,260 @@ class FixpointApi:
 
 
     @validate_call
+    def fixpoint_delete_dataset(
+        self,
+        dataset_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1DeleteDatasetResponse:
+        """fixpoint_delete_dataset
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_delete_dataset_serialize(
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def fixpoint_delete_dataset_with_http_info(
+        self,
+        dataset_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1DeleteDatasetResponse]:
+        """fixpoint_delete_dataset
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_delete_dataset_serialize(
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def fixpoint_delete_dataset_without_preload_content(
+        self,
+        dataset_id: StrictStr,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """fixpoint_delete_dataset
+
+
+        :param dataset_id: (required)
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_delete_dataset_serialize(
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1DeleteDatasetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _fixpoint_delete_dataset_serialize(
+        self,
+        dataset_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if dataset_id is not None:
+            _path_params['datasetId'] = dataset_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v1/datasets/{datasetId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def fixpoint_delete_log_attribute(
         self,
         name: StrictStr,
@@ -2775,6 +3856,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_list_api_secrets(
         self,
+        alias: Annotated[Optional[StrictStr], Field(description="optional alias to filter by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2791,6 +3873,8 @@ class FixpointApi:
         """List LLM inference API secrets
 
 
+        :param alias: optional alias to filter by
+        :type alias: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2814,6 +3898,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_list_api_secrets_serialize(
+            alias=alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2837,6 +3922,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_list_api_secrets_with_http_info(
         self,
+        alias: Annotated[Optional[StrictStr], Field(description="optional alias to filter by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2853,6 +3939,8 @@ class FixpointApi:
         """List LLM inference API secrets
 
 
+        :param alias: optional alias to filter by
+        :type alias: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2876,6 +3964,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_list_api_secrets_serialize(
+            alias=alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2899,6 +3988,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_list_api_secrets_without_preload_content(
         self,
+        alias: Annotated[Optional[StrictStr], Field(description="optional alias to filter by")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2915,6 +4005,8 @@ class FixpointApi:
         """List LLM inference API secrets
 
 
+        :param alias: optional alias to filter by
+        :type alias: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2938,6 +4030,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_list_api_secrets_serialize(
+            alias=alias,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2956,6 +4049,7 @@ class FixpointApi:
 
     def _fixpoint_list_api_secrets_serialize(
         self,
+        alias,
         _request_auth,
         _content_type,
         _headers,
@@ -2976,6 +4070,10 @@ class FixpointApi:
 
         # process the path parameters
         # process the query parameters
+        if alias is not None:
+            
+            _query_params.append(('alias', alias))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -3528,6 +4626,314 @@ class FixpointApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/datasets',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def fixpoint_list_fine_tune_jobs(
+        self,
+        job_ids: Optional[List[StrictStr]] = None,
+        mode: Optional[StrictStr] = None,
+        query_provider_for_status_and_update: Annotated[Optional[StrictBool], Field(description="When set to true calls an llm provider like openai to get the status of fine tune job")] = None,
+        dataset_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1ListFineTuneJobsResponse:
+        """fixpoint_list_fine_tune_jobs
+
+
+        :param job_ids:
+        :type job_ids: List[str]
+        :param mode:
+        :type mode: str
+        :param query_provider_for_status_and_update: When set to true calls an llm provider like openai to get the status of fine tune job
+        :type query_provider_for_status_and_update: bool
+        :param dataset_id:
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_list_fine_tune_jobs_serialize(
+            job_ids=job_ids,
+            mode=mode,
+            query_provider_for_status_and_update=query_provider_for_status_and_update,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ListFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def fixpoint_list_fine_tune_jobs_with_http_info(
+        self,
+        job_ids: Optional[List[StrictStr]] = None,
+        mode: Optional[StrictStr] = None,
+        query_provider_for_status_and_update: Annotated[Optional[StrictBool], Field(description="When set to true calls an llm provider like openai to get the status of fine tune job")] = None,
+        dataset_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1ListFineTuneJobsResponse]:
+        """fixpoint_list_fine_tune_jobs
+
+
+        :param job_ids:
+        :type job_ids: List[str]
+        :param mode:
+        :type mode: str
+        :param query_provider_for_status_and_update: When set to true calls an llm provider like openai to get the status of fine tune job
+        :type query_provider_for_status_and_update: bool
+        :param dataset_id:
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_list_fine_tune_jobs_serialize(
+            job_ids=job_ids,
+            mode=mode,
+            query_provider_for_status_and_update=query_provider_for_status_and_update,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ListFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def fixpoint_list_fine_tune_jobs_without_preload_content(
+        self,
+        job_ids: Optional[List[StrictStr]] = None,
+        mode: Optional[StrictStr] = None,
+        query_provider_for_status_and_update: Annotated[Optional[StrictBool], Field(description="When set to true calls an llm provider like openai to get the status of fine tune job")] = None,
+        dataset_id: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """fixpoint_list_fine_tune_jobs
+
+
+        :param job_ids:
+        :type job_ids: List[str]
+        :param mode:
+        :type mode: str
+        :param query_provider_for_status_and_update: When set to true calls an llm provider like openai to get the status of fine tune job
+        :type query_provider_for_status_and_update: bool
+        :param dataset_id:
+        :type dataset_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._fixpoint_list_fine_tune_jobs_serialize(
+            job_ids=job_ids,
+            mode=mode,
+            query_provider_for_status_and_update=query_provider_for_status_and_update,
+            dataset_id=dataset_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ListFineTuneJobsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _fixpoint_list_fine_tune_jobs_serialize(
+        self,
+        job_ids,
+        mode,
+        query_provider_for_status_and_update,
+        dataset_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'jobIds': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if job_ids is not None:
+            
+            _query_params.append(('jobIds', job_ids))
+            
+        if mode is not None:
+            
+            _query_params.append(('mode', mode))
+            
+        if query_provider_for_status_and_update is not None:
+            
+            _query_params.append(('queryProviderForStatusAndUpdate', query_provider_for_status_and_update))
+            
+        if dataset_id is not None:
+            
+            _query_params.append(('datasetId', dataset_id))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            [
+                'application/json'
+            ]
+        )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/fine_tune_jobs',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5129,7 +6535,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_update_spending_totals(
         self,
-        route_config_id: StrictStr,
+        routing_config_id: StrictStr,
         body: FixpointUpdateSpendingTotalsRequest,
         _request_timeout: Union[
             None,
@@ -5148,8 +6554,8 @@ class FixpointApi:
 
         Update spending totals on a routing config.
 
-        :param route_config_id: (required)
-        :type route_config_id: str
+        :param routing_config_id: (required)
+        :type routing_config_id: str
         :param body: (required)
         :type body: FixpointUpdateSpendingTotalsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5175,7 +6581,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_update_spending_totals_serialize(
-            route_config_id=route_config_id,
+            routing_config_id=routing_config_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5200,7 +6606,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_update_spending_totals_with_http_info(
         self,
-        route_config_id: StrictStr,
+        routing_config_id: StrictStr,
         body: FixpointUpdateSpendingTotalsRequest,
         _request_timeout: Union[
             None,
@@ -5219,8 +6625,8 @@ class FixpointApi:
 
         Update spending totals on a routing config.
 
-        :param route_config_id: (required)
-        :type route_config_id: str
+        :param routing_config_id: (required)
+        :type routing_config_id: str
         :param body: (required)
         :type body: FixpointUpdateSpendingTotalsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5246,7 +6652,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_update_spending_totals_serialize(
-            route_config_id=route_config_id,
+            routing_config_id=routing_config_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5271,7 +6677,7 @@ class FixpointApi:
     @validate_call
     def fixpoint_update_spending_totals_without_preload_content(
         self,
-        route_config_id: StrictStr,
+        routing_config_id: StrictStr,
         body: FixpointUpdateSpendingTotalsRequest,
         _request_timeout: Union[
             None,
@@ -5290,8 +6696,8 @@ class FixpointApi:
 
         Update spending totals on a routing config.
 
-        :param route_config_id: (required)
-        :type route_config_id: str
+        :param routing_config_id: (required)
+        :type routing_config_id: str
         :param body: (required)
         :type body: FixpointUpdateSpendingTotalsRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -5317,7 +6723,7 @@ class FixpointApi:
         """ # noqa: E501
 
         _param = self._fixpoint_update_spending_totals_serialize(
-            route_config_id=route_config_id,
+            routing_config_id=routing_config_id,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5337,7 +6743,7 @@ class FixpointApi:
 
     def _fixpoint_update_spending_totals_serialize(
         self,
-        route_config_id,
+        routing_config_id,
         body,
         _request_auth,
         _content_type,
@@ -5358,8 +6764,8 @@ class FixpointApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if route_config_id is not None:
-            _path_params['routeConfigId'] = route_config_id
+        if routing_config_id is not None:
+            _path_params['routingConfigId'] = routing_config_id
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -5395,7 +6801,7 @@ class FixpointApi:
 
         return self.api_client.param_serialize(
             method='PATCH',
-            resource_path='/v1/routing_configs/{routeConfigId}',
+            resource_path='/v1/routing_configs/{routingConfigId}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
