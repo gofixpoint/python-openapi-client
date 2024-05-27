@@ -4,6 +4,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**fixpoint_batch_create_fine_tune_jobs**](FixpointApi.md#fixpoint_batch_create_fine_tune_jobs) | **POST** /v1/fine_tune_jobs:batchCreate | 
+[**fixpoint_batch_delete_dataset_logs**](FixpointApi.md#fixpoint_batch_delete_dataset_logs) | **POST** /v1/datasets/{datasetId}/logs:deleteLogs | 
+[**fixpoint_create_ab_chat_completion**](FixpointApi.md#fixpoint_create_ab_chat_completion) | **POST** /v1/chat/completions/ab | Create A/B routed chat completion
 [**fixpoint_create_api_secret**](FixpointApi.md#fixpoint_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
 [**fixpoint_create_app_logs**](FixpointApi.md#fixpoint_create_app_logs) | **POST** /v1/app_logs | Create application logs
 [**fixpoint_create_dataset**](FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
@@ -13,17 +16,225 @@ Method | HTTP request | Description
 [**fixpoint_create_open_ai_chat_input_log**](FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
 [**fixpoint_create_open_ai_chat_output_log**](FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
 [**fixpoint_create_routing_config**](FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
+[**fixpoint_delete_dataset**](FixpointApi.md#fixpoint_delete_dataset) | **DELETE** /v1/datasets/{datasetId} | 
 [**fixpoint_delete_log_attribute**](FixpointApi.md#fixpoint_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
 [**fixpoint_list_api_secrets**](FixpointApi.md#fixpoint_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
 [**fixpoint_list_app_logs**](FixpointApi.md#fixpoint_list_app_logs) | **GET** /v1/app_logs | List application logs
 [**fixpoint_list_datasets**](FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
+[**fixpoint_list_fine_tune_jobs**](FixpointApi.md#fixpoint_list_fine_tune_jobs) | **GET** /v1/fine_tune_jobs | 
 [**fixpoint_list_likes**](FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
 [**fixpoint_list_log_attributes**](FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
 [**fixpoint_list_open_ai_chat_logs**](FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | DEPRECATED: List LLM logs
 [**fixpoint_list_routing_configs**](FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
 [**fixpoint_post_dataset_logs**](FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
-[**fixpoint_update_spending_totals**](FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
+[**fixpoint_update_spending_totals**](FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routingConfigId} | Update routing config spending totals
 
+
+# **fixpoint_batch_create_fine_tune_jobs**
+> V1BatchCreateFineTuneJobsResponse fixpoint_batch_create_fine_tune_jobs(body)
+
+
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_batch_create_fine_tune_jobs_request import V1BatchCreateFineTuneJobsRequest
+from fixpoint_openapi.models.v1_batch_create_fine_tune_jobs_response import V1BatchCreateFineTuneJobsResponse
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    body = fixpoint_openapi.V1BatchCreateFineTuneJobsRequest() # V1BatchCreateFineTuneJobsRequest | 
+
+    try:
+        api_response = api_instance.fixpoint_batch_create_fine_tune_jobs(body)
+        print("The response of FixpointApi->fixpoint_batch_create_fine_tune_jobs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_batch_create_fine_tune_jobs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**V1BatchCreateFineTuneJobsRequest**](V1BatchCreateFineTuneJobsRequest.md)|  | 
+
+### Return type
+
+[**V1BatchCreateFineTuneJobsResponse**](V1BatchCreateFineTuneJobsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fixpoint_batch_delete_dataset_logs**
+> V1DeleteDatasetLogsResponse fixpoint_batch_delete_dataset_logs(dataset_id, body)
+
+
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.fixpoint_batch_delete_dataset_logs_request import FixpointBatchDeleteDatasetLogsRequest
+from fixpoint_openapi.models.v1_delete_dataset_logs_response import V1DeleteDatasetLogsResponse
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    dataset_id = 'dataset_id_example' # str | 
+    body = fixpoint_openapi.FixpointBatchDeleteDatasetLogsRequest() # FixpointBatchDeleteDatasetLogsRequest | 
+
+    try:
+        api_response = api_instance.fixpoint_batch_delete_dataset_logs(dataset_id, body)
+        print("The response of FixpointApi->fixpoint_batch_delete_dataset_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_batch_delete_dataset_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dataset_id** | **str**|  | 
+ **body** | [**FixpointBatchDeleteDatasetLogsRequest**](FixpointBatchDeleteDatasetLogsRequest.md)|  | 
+
+### Return type
+
+[**V1DeleteDatasetLogsResponse**](V1DeleteDatasetLogsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fixpoint_create_ab_chat_completion**
+> V1AbChatCompletion fixpoint_create_ab_chat_completion(body)
+
+Create A/B routed chat completion
+
+Create a chat completion that is routed to one of the A/B experiment arms.
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_ab_chat_completion import V1AbChatCompletion
+from fixpoint_openapi.models.v1_create_ab_chat_completion_request import V1CreateABChatCompletionRequest
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    body = fixpoint_openapi.V1CreateABChatCompletionRequest() # V1CreateABChatCompletionRequest | 
+
+    try:
+        # Create A/B routed chat completion
+        api_response = api_instance.fixpoint_create_ab_chat_completion(body)
+        print("The response of FixpointApi->fixpoint_create_ab_chat_completion:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_create_ab_chat_completion: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**V1CreateABChatCompletionRequest**](V1CreateABChatCompletionRequest.md)|  | 
+
+### Return type
+
+[**V1AbChatCompletion**](V1AbChatCompletion.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fixpoint_create_api_secret**
 > V1ApiSecret fixpoint_create_api_secret(body)
@@ -652,6 +863,72 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **fixpoint_delete_dataset**
+> V1DeleteDatasetResponse fixpoint_delete_dataset(dataset_id)
+
+
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_delete_dataset_response import V1DeleteDatasetResponse
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    dataset_id = 'dataset_id_example' # str | 
+
+    try:
+        api_response = api_instance.fixpoint_delete_dataset(dataset_id)
+        print("The response of FixpointApi->fixpoint_delete_dataset:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_delete_dataset: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dataset_id** | **str**|  | 
+
+### Return type
+
+[**V1DeleteDatasetResponse**](V1DeleteDatasetResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **fixpoint_delete_log_attribute**
 > V1DeleteLogAttributeResponse fixpoint_delete_log_attribute(name)
 
@@ -720,7 +997,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fixpoint_list_api_secrets**
-> V1ListApiSecretsResponse fixpoint_list_api_secrets()
+> V1ListApiSecretsResponse fixpoint_list_api_secrets(alias=alias)
 
 List LLM inference API secrets
 
@@ -744,10 +1021,11 @@ configuration = fixpoint_openapi.Configuration(
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fixpoint_openapi.FixpointApi(api_client)
+    alias = 'alias_example' # str | optional alias to filter by (optional)
 
     try:
         # List LLM inference API secrets
-        api_response = api_instance.fixpoint_list_api_secrets()
+        api_response = api_instance.fixpoint_list_api_secrets(alias=alias)
         print("The response of FixpointApi->fixpoint_list_api_secrets:\n")
         pprint(api_response)
     except Exception as e:
@@ -758,7 +1036,10 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **alias** | **str**| optional alias to filter by | [optional] 
 
 ### Return type
 
@@ -901,6 +1182,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1ListDatasetsResponse**](V1ListDatasetsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fixpoint_list_fine_tune_jobs**
+> V1ListFineTuneJobsResponse fixpoint_list_fine_tune_jobs(job_ids=job_ids, mode=mode, query_provider_for_status_and_update=query_provider_for_status_and_update, dataset_id=dataset_id)
+
+
+
+### Example
+
+
+```python
+import fixpoint_openapi
+from fixpoint_openapi.models.v1_list_fine_tune_jobs_response import V1ListFineTuneJobsResponse
+from fixpoint_openapi.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = fixpoint_openapi.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with fixpoint_openapi.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = fixpoint_openapi.FixpointApi(api_client)
+    job_ids = ['job_ids_example'] # List[str] |  (optional)
+    mode = 'MODE_UNSPECIFIED' # str |  (optional) (default to 'MODE_UNSPECIFIED')
+    query_provider_for_status_and_update = True # bool | When set to true calls an llm provider like openai to get the status of fine tune job (optional)
+    dataset_id = 'dataset_id_example' # str |  (optional)
+
+    try:
+        api_response = api_instance.fixpoint_list_fine_tune_jobs(job_ids=job_ids, mode=mode, query_provider_for_status_and_update=query_provider_for_status_and_update, dataset_id=dataset_id)
+        print("The response of FixpointApi->fixpoint_list_fine_tune_jobs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling FixpointApi->fixpoint_list_fine_tune_jobs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_ids** | [**List[str]**](str.md)|  | [optional] 
+ **mode** | **str**|  | [optional] [default to &#39;MODE_UNSPECIFIED&#39;]
+ **query_provider_for_status_and_update** | **bool**| When set to true calls an llm provider like openai to get the status of fine tune job | [optional] 
+ **dataset_id** | **str**|  | [optional] 
+
+### Return type
+
+[**V1ListFineTuneJobsResponse**](V1ListFineTuneJobsResponse.md)
 
 ### Authorization
 
@@ -1289,7 +1642,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fixpoint_update_spending_totals**
-> V1RoutingConfig fixpoint_update_spending_totals(route_config_id, body)
+> V1RoutingConfig fixpoint_update_spending_totals(routing_config_id, body)
 
 Update routing config spending totals
 
@@ -1316,12 +1669,12 @@ configuration = fixpoint_openapi.Configuration(
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fixpoint_openapi.FixpointApi(api_client)
-    route_config_id = 'route_config_id_example' # str | 
+    routing_config_id = 'routing_config_id_example' # str | 
     body = fixpoint_openapi.FixpointUpdateSpendingTotalsRequest() # FixpointUpdateSpendingTotalsRequest | 
 
     try:
         # Update routing config spending totals
-        api_response = api_instance.fixpoint_update_spending_totals(route_config_id, body)
+        api_response = api_instance.fixpoint_update_spending_totals(routing_config_id, body)
         print("The response of FixpointApi->fixpoint_update_spending_totals:\n")
         pprint(api_response)
     except Exception as e:
@@ -1335,7 +1688,7 @@ with fixpoint_openapi.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **route_config_id** | **str**|  | 
+ **routing_config_id** | **str**|  | 
  **body** | [**FixpointUpdateSpendingTotalsRequest**](FixpointUpdateSpendingTotalsRequest.md)|  | 
 
 ### Return type

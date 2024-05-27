@@ -67,15 +67,14 @@ configuration = fixpoint_openapi.Configuration(
 with fixpoint_openapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fixpoint_openapi.FixpointApi(api_client)
-    body = fixpoint_openapi.V1CreateApiSecretRequest() # V1CreateApiSecretRequest | 
+    body = fixpoint_openapi.V1BatchCreateFineTuneJobsRequest() # V1BatchCreateFineTuneJobsRequest | 
 
     try:
-        # Store LLM inference API secret
-        api_response = api_instance.fixpoint_create_api_secret(body)
-        print("The response of FixpointApi->fixpoint_create_api_secret:\n")
+        api_response = api_instance.fixpoint_batch_create_fine_tune_jobs(body)
+        print("The response of FixpointApi->fixpoint_batch_create_fine_tune_jobs:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling FixpointApi->fixpoint_create_api_secret: %s\n" % e)
+        print("Exception when calling FixpointApi->fixpoint_batch_create_fine_tune_jobs: %s\n" % e)
 
 ```
 
@@ -85,6 +84,9 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*FixpointApi* | [**fixpoint_batch_create_fine_tune_jobs**](docs/FixpointApi.md#fixpoint_batch_create_fine_tune_jobs) | **POST** /v1/fine_tune_jobs:batchCreate | 
+*FixpointApi* | [**fixpoint_batch_delete_dataset_logs**](docs/FixpointApi.md#fixpoint_batch_delete_dataset_logs) | **POST** /v1/datasets/{datasetId}/logs:deleteLogs | 
+*FixpointApi* | [**fixpoint_create_ab_chat_completion**](docs/FixpointApi.md#fixpoint_create_ab_chat_completion) | **POST** /v1/chat/completions/ab | Create A/B routed chat completion
 *FixpointApi* | [**fixpoint_create_api_secret**](docs/FixpointApi.md#fixpoint_create_api_secret) | **POST** /v1/api_secrets | Store LLM inference API secret
 *FixpointApi* | [**fixpoint_create_app_logs**](docs/FixpointApi.md#fixpoint_create_app_logs) | **POST** /v1/app_logs | Create application logs
 *FixpointApi* | [**fixpoint_create_dataset**](docs/FixpointApi.md#fixpoint_create_dataset) | **POST** /v1/datasets | Create LLM dataset
@@ -94,37 +96,45 @@ Class | Method | HTTP request | Description
 *FixpointApi* | [**fixpoint_create_open_ai_chat_input_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_input_log) | **POST** /v1/openai_chats/{modelName}/input_logs | Create an LLM input log
 *FixpointApi* | [**fixpoint_create_open_ai_chat_output_log**](docs/FixpointApi.md#fixpoint_create_open_ai_chat_output_log) | **POST** /v1/openai_chats/{modelName}/output_logs | Create an LLM output log
 *FixpointApi* | [**fixpoint_create_routing_config**](docs/FixpointApi.md#fixpoint_create_routing_config) | **POST** /v1/routing_configs | Create LLM routing config
+*FixpointApi* | [**fixpoint_delete_dataset**](docs/FixpointApi.md#fixpoint_delete_dataset) | **DELETE** /v1/datasets/{datasetId} | 
 *FixpointApi* | [**fixpoint_delete_log_attribute**](docs/FixpointApi.md#fixpoint_delete_log_attribute) | **DELETE** /v1/attributes/{name} | Remove LLM log attribute
 *FixpointApi* | [**fixpoint_list_api_secrets**](docs/FixpointApi.md#fixpoint_list_api_secrets) | **GET** /v1/api_secrets | List LLM inference API secrets
 *FixpointApi* | [**fixpoint_list_app_logs**](docs/FixpointApi.md#fixpoint_list_app_logs) | **GET** /v1/app_logs | List application logs
 *FixpointApi* | [**fixpoint_list_datasets**](docs/FixpointApi.md#fixpoint_list_datasets) | **GET** /v1/datasets | List LLM datasets
+*FixpointApi* | [**fixpoint_list_fine_tune_jobs**](docs/FixpointApi.md#fixpoint_list_fine_tune_jobs) | **GET** /v1/fine_tune_jobs | 
 *FixpointApi* | [**fixpoint_list_likes**](docs/FixpointApi.md#fixpoint_list_likes) | **GET** /v1/likes | List LLM log feedback (\&quot;likes\&quot;)
 *FixpointApi* | [**fixpoint_list_log_attributes**](docs/FixpointApi.md#fixpoint_list_log_attributes) | **GET** /v1/attributes | List attributes on an LLM log
 *FixpointApi* | [**fixpoint_list_open_ai_chat_logs**](docs/FixpointApi.md#fixpoint_list_open_ai_chat_logs) | **GET** /v1/{parent}/logs | DEPRECATED: List LLM logs
 *FixpointApi* | [**fixpoint_list_routing_configs**](docs/FixpointApi.md#fixpoint_list_routing_configs) | **GET** /v1/routing_configs | List LLM routing configs
 *FixpointApi* | [**fixpoint_post_dataset_logs**](docs/FixpointApi.md#fixpoint_post_dataset_logs) | **POST** /v1/datasets/{name}/logs | Add logs to a dataset
-*FixpointApi* | [**fixpoint_update_spending_totals**](docs/FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routeConfigId} | Update routing config spending totals
+*FixpointApi* | [**fixpoint_update_spending_totals**](docs/FixpointApi.md#fixpoint_update_spending_totals) | **PATCH** /v1/routing_configs/{routingConfigId} | Update routing config spending totals
 
 
 ## Documentation For Models
 
  - [AppLogLevelType](docs/AppLogLevelType.md)
+ - [FixpointBatchDeleteDatasetLogsRequest](docs/FixpointBatchDeleteDatasetLogsRequest.md)
  - [FixpointCreateOpenAIChatInputLogRequest](docs/FixpointCreateOpenAIChatInputLogRequest.md)
  - [FixpointCreateOpenAIChatOutputLogRequest](docs/FixpointCreateOpenAIChatOutputLogRequest.md)
  - [FixpointPostDatasetLogsRequest](docs/FixpointPostDatasetLogsRequest.md)
  - [FixpointUpdateSpendingTotalsRequest](docs/FixpointUpdateSpendingTotalsRequest.md)
- - [Fixpointv1Model](docs/Fixpointv1Model.md)
+ - [Fixpointv1SpendCap](docs/Fixpointv1SpendCap.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [ProtobufNullValue](docs/ProtobufNullValue.md)
+ - [RoutingBlockAB](docs/RoutingBlockAB.md)
  - [RpcStatus](docs/RpcStatus.md)
  - [ToolCallFunction](docs/ToolCallFunction.md)
+ - [V1AbChatCompletion](docs/V1AbChatCompletion.md)
  - [V1ApiSecret](docs/V1ApiSecret.md)
  - [V1ApiSecretProvider](docs/V1ApiSecretProvider.md)
  - [V1AppLog](docs/V1AppLog.md)
  - [V1AttributeFilters](docs/V1AttributeFilters.md)
+ - [V1BatchCreateFineTuneJobsRequest](docs/V1BatchCreateFineTuneJobsRequest.md)
+ - [V1BatchCreateFineTuneJobsResponse](docs/V1BatchCreateFineTuneJobsResponse.md)
  - [V1ChatCompletion](docs/V1ChatCompletion.md)
  - [V1ChatCompletionChoice](docs/V1ChatCompletionChoice.md)
  - [V1ChatCompletionUsage](docs/V1ChatCompletionUsage.md)
+ - [V1CreateABChatCompletionRequest](docs/V1CreateABChatCompletionRequest.md)
  - [V1CreateApiSecretRequest](docs/V1CreateApiSecretRequest.md)
  - [V1CreateAppLogsRequest](docs/V1CreateAppLogsRequest.md)
  - [V1CreateAppLogsResponse](docs/V1CreateAppLogsResponse.md)
@@ -135,12 +145,16 @@ Class | Method | HTTP request | Description
  - [V1CreateLogAttributeRequest](docs/V1CreateLogAttributeRequest.md)
  - [V1CreateLogAttributeResponse](docs/V1CreateLogAttributeResponse.md)
  - [V1CreateMultiLLMChatCompletionRequest](docs/V1CreateMultiLLMChatCompletionRequest.md)
- - [V1CreateMultiLLMChatCompletionRequestModel](docs/V1CreateMultiLLMChatCompletionRequestModel.md)
  - [V1CreateRoutingConfigRequest](docs/V1CreateRoutingConfigRequest.md)
  - [V1Dataset](docs/V1Dataset.md)
  - [V1DatasetFilters](docs/V1DatasetFilters.md)
+ - [V1DeleteDatasetLogsResponse](docs/V1DeleteDatasetLogsResponse.md)
+ - [V1DeleteDatasetResponse](docs/V1DeleteDatasetResponse.md)
  - [V1DeleteLogAttributeResponse](docs/V1DeleteLogAttributeResponse.md)
  - [V1FallbackStrategy](docs/V1FallbackStrategy.md)
+ - [V1FineTuneJob](docs/V1FineTuneJob.md)
+ - [V1FineTuneStatus](docs/V1FineTuneStatus.md)
+ - [V1Hyperparameters](docs/V1Hyperparameters.md)
  - [V1InputMessage](docs/V1InputMessage.md)
  - [V1Like](docs/V1Like.md)
  - [V1LikeFilter](docs/V1LikeFilter.md)
@@ -148,12 +162,14 @@ Class | Method | HTTP request | Description
  - [V1ListApiSecretsResponse](docs/V1ListApiSecretsResponse.md)
  - [V1ListAppLogsResponse](docs/V1ListAppLogsResponse.md)
  - [V1ListDatasetsResponse](docs/V1ListDatasetsResponse.md)
+ - [V1ListFineTuneJobsResponse](docs/V1ListFineTuneJobsResponse.md)
  - [V1ListLikesResponse](docs/V1ListLikesResponse.md)
  - [V1ListLogAttributesResponse](docs/V1ListLogAttributesResponse.md)
  - [V1ListOpenAIChatLogsResponse](docs/V1ListOpenAIChatLogsResponse.md)
  - [V1ListRoutingConfigsResponse](docs/V1ListRoutingConfigsResponse.md)
  - [V1LogAttribute](docs/V1LogAttribute.md)
  - [V1Mode](docs/V1Mode.md)
+ - [V1Model](docs/V1Model.md)
  - [V1MultiLLMChatCompletion](docs/V1MultiLLMChatCompletion.md)
  - [V1OpenAIChatInputLog](docs/V1OpenAIChatInputLog.md)
  - [V1OpenAIChatLog](docs/V1OpenAIChatLog.md)
@@ -166,13 +182,17 @@ Class | Method | HTTP request | Description
  - [V1PostDatasetLogsResponse](docs/V1PostDatasetLogsResponse.md)
  - [V1RelativeDateTimeFilters](docs/V1RelativeDateTimeFilters.md)
  - [V1ResetInterval](docs/V1ResetInterval.md)
+ - [V1RoutingBlock](docs/V1RoutingBlock.md)
+ - [V1RoutingBlockSpendCap](docs/V1RoutingBlockSpendCap.md)
+ - [V1RoutingBlockType](docs/V1RoutingBlockType.md)
  - [V1RoutingConfig](docs/V1RoutingConfig.md)
- - [V1SpendCap](docs/V1SpendCap.md)
+ - [V1SpendCapModel](docs/V1SpendCapModel.md)
  - [V1TerminalState](docs/V1TerminalState.md)
  - [V1ThumbsReaction](docs/V1ThumbsReaction.md)
  - [V1ToolCall](docs/V1ToolCall.md)
  - [V1Tracing](docs/V1Tracing.md)
  - [V1TracingFilters](docs/V1TracingFilters.md)
+ - [V1TuningConfiguration](docs/V1TuningConfiguration.md)
  - [V1UsageTotals](docs/V1UsageTotals.md)
 
 

@@ -17,18 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
-from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_spend_cap_model import V1SpendCapModel
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FixpointUpdateSpendingTotalsRequest(BaseModel):
+class V1Model(BaseModel):
     """
-    FixpointUpdateSpendingTotalsRequest
+    V1Model
     """ # noqa: E501
-    models: Optional[List[V1SpendCapModel]] = Field(default=None, description="Spend cap and totals for each model are deltas so that the client cannot alter usage metrics.")
-    __properties: ClassVar[List[str]] = ["models"]
+    name: StrictStr = Field(description="Supported model providers are:  - openai - anthropic")
+    temperature: Optional[Union[StrictFloat, StrictInt]] = None
+    api_key: Optional[StrictStr] = Field(default=None, description="Optional API key for the model provider that serves this model. If you do not specify this, we will try to load in the corresponding API key stored within Fixpoint.", alias="apiKey")
+    max_tokens: Optional[StrictInt] = Field(default=None, alias="maxTokens")
+    __properties: ClassVar[List[str]] = ["name", "temperature", "apiKey", "maxTokens"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +50,7 @@ class FixpointUpdateSpendingTotalsRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FixpointUpdateSpendingTotalsRequest from a JSON string"""
+        """Create an instance of V1Model from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,18 +71,16 @@ class FixpointUpdateSpendingTotalsRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in models (list)
-        _items = []
-        if self.models:
-            for _item in self.models:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['models'] = _items
+        # set to None if temperature (nullable) is None
+        # and model_fields_set contains the field
+        if self.temperature is None and "temperature" in self.model_fields_set:
+            _dict['temperature'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FixpointUpdateSpendingTotalsRequest from a dict"""
+        """Create an instance of V1Model from a dict"""
         if obj is None:
             return None
 
@@ -88,7 +88,10 @@ class FixpointUpdateSpendingTotalsRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "models": [V1SpendCapModel.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None
+            "name": obj.get("name"),
+            "temperature": obj.get("temperature"),
+            "apiKey": obj.get("apiKey"),
+            "maxTokens": obj.get("maxTokens")
         })
         return _obj
 

@@ -17,25 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from fixpoint_openapi.models.v1_fallback_strategy import V1FallbackStrategy
-from fixpoint_openapi.models.v1_routing_block import V1RoutingBlock
-from fixpoint_openapi.models.v1_spend_cap_model import V1SpendCapModel
-from fixpoint_openapi.models.v1_terminal_state import V1TerminalState
+from fixpoint_openapi.models.routing_block_ab import RoutingBlockAB
+from fixpoint_openapi.models.v1_routing_block_spend_cap import V1RoutingBlockSpendCap
+from fixpoint_openapi.models.v1_routing_block_type import V1RoutingBlockType
 from typing import Optional, Set
 from typing_extensions import Self
 
-class V1CreateRoutingConfigRequest(BaseModel):
+class V1RoutingBlock(BaseModel):
     """
-    V1CreateRoutingConfigRequest
+    V1RoutingBlock
     """ # noqa: E501
-    description: Optional[StrictStr] = None
-    blocks: Optional[List[V1RoutingBlock]] = None
-    models: Optional[List[V1SpendCapModel]] = None
-    fallback_strategy: Optional[V1FallbackStrategy] = Field(default=None, alias="fallbackStrategy")
-    terminal_state: Optional[V1TerminalState] = Field(default=None, alias="terminalState")
-    __properties: ClassVar[List[str]] = ["description", "blocks", "models", "fallbackStrategy", "terminalState"]
+    type: Optional[V1RoutingBlockType] = None
+    spend_cap: Optional[V1RoutingBlockSpendCap] = Field(default=None, alias="spendCap")
+    ab: Optional[RoutingBlockAB] = None
+    __properties: ClassVar[List[str]] = ["type", "spendCap", "ab"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +52,7 @@ class V1CreateRoutingConfigRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1CreateRoutingConfigRequest from a JSON string"""
+        """Create an instance of V1RoutingBlock from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,25 +73,17 @@ class V1CreateRoutingConfigRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in blocks (list)
-        _items = []
-        if self.blocks:
-            for _item in self.blocks:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['blocks'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in models (list)
-        _items = []
-        if self.models:
-            for _item in self.models:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['models'] = _items
+        # override the default output from pydantic by calling `to_dict()` of spend_cap
+        if self.spend_cap:
+            _dict['spendCap'] = self.spend_cap.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of ab
+        if self.ab:
+            _dict['ab'] = self.ab.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1CreateRoutingConfigRequest from a dict"""
+        """Create an instance of V1RoutingBlock from a dict"""
         if obj is None:
             return None
 
@@ -102,11 +91,9 @@ class V1CreateRoutingConfigRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "blocks": [V1RoutingBlock.from_dict(_item) for _item in obj["blocks"]] if obj.get("blocks") is not None else None,
-            "models": [V1SpendCapModel.from_dict(_item) for _item in obj["models"]] if obj.get("models") is not None else None,
-            "fallbackStrategy": obj.get("fallbackStrategy"),
-            "terminalState": obj.get("terminalState")
+            "type": obj.get("type"),
+            "spendCap": V1RoutingBlockSpendCap.from_dict(obj["spendCap"]) if obj.get("spendCap") is not None else None,
+            "ab": RoutingBlockAB.from_dict(obj["ab"]) if obj.get("ab") is not None else None
         })
         return _obj
 

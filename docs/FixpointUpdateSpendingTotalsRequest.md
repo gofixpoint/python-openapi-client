@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**models** | [**List[Fixpointv1Model]**](Fixpointv1Model.md) | Spend cap and totals for each model are deltas so that the client cannot alter usage metrics. | [optional] 
+**models** | [**List[V1SpendCapModel]**](V1SpendCapModel.md) | Spend cap and totals for each model are deltas so that the client cannot alter usage metrics. | [optional] 
 
 ## Example
 
